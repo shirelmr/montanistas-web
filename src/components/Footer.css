@@ -1,0 +1,32 @@
+.footer {
+  padding: 48px 0;
+  background: var(--bg-1);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer__copy {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer__social {
+  max-width: 120px;
+}
+
+@media (max-width: 640px) {
+  .footer__inner {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .footer__social {
+    max-width: none;
+  }
+}

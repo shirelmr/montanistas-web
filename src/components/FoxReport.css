@@ -1,0 +1,13 @@
+.fox__title {
+  margin-bottom: 16px;
+  font-size: clamp(32px, 4.6vw, 58px);
+}
+
+.fox__subtitle {
+  max-width: 560px;
+  margin: 0 auto 32px;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

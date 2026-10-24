@@ -1,0 +1,41 @@
+.subscribe {
+  padding: 72px 0;
+  text-align: center;
+}
+
+.subscribe__heading {
+  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(34px, 3.8vw, 50px);
+}
+
+.subscribe__text {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.subscribe__form {
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subscribe__field {
+  flex: 1;
+  border-color: #1e1e1e;
+  background: #1e1e1e;
+}
+
+.subscribe__thanks {
+  margin: 16px 0 0;
+  color: var(--gold);
+}
+
+@media (max-width: 480px) {
+  .subscribe__form {
+    flex-direction: column;
+  }
+}

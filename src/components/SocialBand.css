@@ -1,0 +1,15 @@
+.social-band {
+  --social-glyph: var(--orange);
+  padding: 56px 0;
+  background: var(--orange);
+  text-align: center;
+}
+
+.social-band__title {
+  margin: 0 0 36px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 50px);
+  line-height: 1.12;
+  text-transform: uppercase;
+}
