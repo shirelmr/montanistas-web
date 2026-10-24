@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import Photo from './Photo'
+import { useLanguage } from '../i18n/LanguageContext'
+import { ui } from '../data/content'
 import './CarouselGallery.css'
 
 // Centered slideshow with the neighbouring photos dimmed on each side and a
 // row of thumbnails underneath.
 export default function CarouselGallery({ title, photos, uppercase = true, tone = 'grey' }) {
+  const { t } = useLanguage()
   const [index, setIndex] = useState(0)
   const thumbsRef = useRef(null)
   const count = photos.length
@@ -35,30 +38,30 @@ export default function CarouselGallery({ title, photos, uppercase = true, tone 
   return (
     <section className={`carousel section section--${tone}`}>
       <div className="container--narrow">
-        <h2 className={`section-title ${uppercase ? '' : 'section-title--plain'}`}>{title}</h2>
+        <h2 className={`section-title ${uppercase ? '' : 'section-title--plain'}`}>{t(title)}</h2>
 
-        <div className="carousel__stage" aria-roledescription="carrusel">
+        <div className="carousel__stage" aria-roledescription={t(ui.carousel)}>
           <button
             type="button"
             className="carousel__side carousel__side--prev"
             onClick={() => go(-1)}
-            aria-label="Foto anterior"
+            aria-label={t(ui.previousPhoto)}
           >
-            <Photo src={prev.src} alt={prev.alt} index={at(-1)} />
+            <Photo src={prev.src} alt={t(prev.alt)} index={at(-1)} />
             <FiChevronLeft className="carousel__arrow" aria-hidden="true" />
           </button>
 
           <div className="carousel__main" key={index} aria-live="polite">
-            <Photo src={current.src} alt={current.alt} index={index} />
+            <Photo src={current.src} alt={t(current.alt)} index={index} />
           </div>
 
           <button
             type="button"
             className="carousel__side carousel__side--next"
             onClick={() => go(1)}
-            aria-label="Foto siguiente"
+            aria-label={t(ui.nextPhoto)}
           >
-            <Photo src={next.src} alt={next.alt} index={at(1)} />
+            <Photo src={next.src} alt={t(next.alt)} index={at(1)} />
             <FiChevronRight className="carousel__arrow" aria-hidden="true" />
           </button>
         </div>
@@ -68,7 +71,7 @@ export default function CarouselGallery({ title, photos, uppercase = true, tone 
             type="button"
             className="carousel__thumbs-arrow"
             onClick={() => scrollThumbs(-1)}
-            aria-label="Desplazar miniaturas a la izquierda"
+            aria-label={t(ui.thumbsLeft)}
           >
             <FiChevronLeft />
           </button>
@@ -76,10 +79,10 @@ export default function CarouselGallery({ title, photos, uppercase = true, tone 
             {photos.map((photo, i) => (
               <button
                 type="button"
-                key={photo.alt}
+                key={i}
                 className={`carousel__thumb ${i === index ? 'is-active' : ''}`}
                 onClick={() => setIndex(i)}
-                aria-label={`Ver ${photo.alt}`}
+                aria-label={`${t(ui.viewPhoto)} ${t(photo.alt)}`}
                 aria-current={i === index}
               >
                 <Photo src={photo.src} alt="" index={i} />
@@ -90,7 +93,7 @@ export default function CarouselGallery({ title, photos, uppercase = true, tone 
             type="button"
             className="carousel__thumbs-arrow"
             onClick={() => scrollThumbs(1)}
-            aria-label="Desplazar miniaturas a la derecha"
+            aria-label={t(ui.thumbsRight)}
           >
             <FiChevronRight />
           </button>

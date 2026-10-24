@@ -1,12 +1,15 @@
 import VideoEmbed from './VideoEmbed'
+import { useLanguage } from '../i18n/LanguageContext'
 import './MediaRows.css'
 
 // List of videos with a description beside each, alternating sides per row.
 export default function MediaRows({ heading, items, tone = 'dark', titleClassName = '' }) {
+  const { t } = useLanguage()
+
   return (
     <section className={`media section section--${tone}`}>
       <div className="container--narrow">
-        <h2 className={`section-title ${titleClassName}`}>{heading}</h2>
+        <h2 className={`section-title ${titleClassName}`}>{t(heading)}</h2>
         <div className="media__rows">
           {items.map((item, i) => (
             <article
@@ -17,9 +20,9 @@ export default function MediaRows({ heading, items, tone = 'dark', titleClassNam
                 <VideoEmbed video={item.video} />
               </div>
               <div className="media__text">
-                <h3 className="media__title">{item.title}</h3>
+                <h3 className="media__title">{t(item.title)}</h3>
                 <div className="media__body">
-                  {item.text.map((line) => (
+                  {t(item.text).map((line) => (
                     <p key={line}>{line}</p>
                   ))}
                 </div>

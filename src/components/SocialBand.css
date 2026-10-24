@@ -13,3 +13,7 @@
   line-height: 1.12;
   text-transform: uppercase;
 }
+
+.social-band__title span {
+  display: block;
+}

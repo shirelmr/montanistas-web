@@ -12,11 +12,13 @@ import Contact from './components/Contact'
 import Subscribe from './components/Subscribe'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
+import LanguageToggle from './components/LanguageToggle'
 import { community, galleries, videoList } from './data/content'
 
 export default function App() {
   return (
     <>
+      <LanguageToggle />
       <Hero />
       <main>
         <About />

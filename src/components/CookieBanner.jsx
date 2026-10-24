@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
+import { cookies } from '../data/content'
 import './CookieBanner.css'
 
 const STORAGE_KEY = 'mdw-cookies-accepted'
@@ -14,6 +16,7 @@ function wasAccepted() {
 }
 
 export default function CookieBanner() {
+  const { t } = useLanguage()
   const [visible, setVisible] = useState(() => !wasAccepted())
 
   if (!visible) return null
@@ -29,13 +32,10 @@ export default function CookieBanner() {
 
   return (
     <aside className="cookies" role="dialog" aria-labelledby="cookies-title">
-      <h2 className="cookies__title" id="cookies-title">This website uses cookies.</h2>
-      <p className="cookies__text">
-        We use cookies to analyze website traffic and optimize your website experience. By
-        accepting our use of cookies, your data will be aggregated with all other user data.
-      </p>
+      <h2 className="cookies__title" id="cookies-title">{t(cookies.title)}</h2>
+      <p className="cookies__text">{t(cookies.text)}</p>
       <button type="button" className="cookies__accept" onClick={accept}>
-        Accept
+        {t(cookies.accept)}
       </button>
     </aside>
   )

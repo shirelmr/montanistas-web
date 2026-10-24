@@ -15,6 +15,14 @@ npm run preview   # serve the production build
 
 All text, emails, hours, social links, photos and videos are in [`src/data/content.js`](src/data/content.js). You don't need to touch the components to update the site.
 
+### Languages
+
+The site is in Spanish and English, switched with the ES / EN toggle in the top-right corner
+(Spanish is the default, and the visitor's choice is remembered). In `content.js`, any text can be:
+
+- a plain string, shown the same in both languages: `title: 'VT Radio'`
+- a pair, shown per language: `title: { es: 'Entrevistas', en: 'Interviews' }`
+
 ### Photos and logo
 
 The site currently shows placeholders. To use real images:

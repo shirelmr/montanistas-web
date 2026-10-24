@@ -1,12 +1,15 @@
 import Logo from './Logo'
-import { hero } from '../data/content'
+import { useLanguage } from '../i18n/LanguageContext'
+import { hero, ui } from '../data/content'
 import './Hero.css'
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   return (
     <header className="hero" id="top">
       <div className="hero__bar">
-        <a href="#top" className="hero__logo-link" aria-label="Inicio">
+        <a href="#top" className="hero__logo-link" aria-label={t(ui.home)}>
           <Logo className="hero__logo" />
         </a>
       </div>
@@ -44,10 +47,10 @@ export default function Hero() {
       </div>
 
       <div className="hero__content container">
-        <h1 className="hero__title">{hero.title}</h1>
-        <p className="hero__subtitle">{hero.subtitle}</p>
+        <h1 className="hero__title">{t(hero.title)}</h1>
+        <p className="hero__subtitle">{t(hero.subtitle)}</p>
         <a className="btn" href={hero.cta.href}>
-          {hero.cta.label}
+          {t(hero.cta.label)}
         </a>
       </div>
     </header>

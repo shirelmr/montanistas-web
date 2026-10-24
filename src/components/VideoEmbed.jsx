@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { FaYoutube, FaPlay } from 'react-icons/fa6'
+import { useLanguage } from '../i18n/LanguageContext'
+import { ui } from '../data/content'
 import './VideoEmbed.css'
 
 function embedUrl({ youtubeId, vimeoId }) {
@@ -11,6 +13,7 @@ function embedUrl({ youtubeId, vimeoId }) {
 // YouTube/Vimeo player that only loads the iframe once it's clicked, so a
 // page with dozens of videos stays fast. Without an ID it shows a placeholder.
 export default function VideoEmbed({ video }) {
+  const { t } = useLanguage()
   const [playing, setPlaying] = useState(false)
   const src = embedUrl(video)
 
@@ -38,14 +41,14 @@ export default function VideoEmbed({ video }) {
       className={`video video--cover ${thumb ? '' : 'video--placeholder'}`}
       onClick={() => setPlaying(true)}
       disabled={!src}
-      aria-label={src ? `Reproducir: ${video.title}` : `${video.title} (video pendiente)`}
+      aria-label={src ? `${t(ui.play)}: ${video.title}` : `${video.title} (${t(ui.videoPending)})`}
     >
       {thumb && <img className="video__thumb" src={thumb} alt="" loading="lazy" />}
       <span className="video__title">{video.title}</span>
       <span className="video__play" aria-hidden="true">
         {video.vimeoId ? <FaPlay /> : <FaYoutube />}
       </span>
-      {!src && <span className="video__note">Video pendiente</span>}
+      {!src && <span className="video__note">{t(ui.videoPending)}</span>}
     </button>
   )
 }
