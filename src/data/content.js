@@ -3,22 +3,30 @@
 // Languages: any text can be a plain string (shown in both languages) or
 // `{ es: '...', en: '...' }` to show a different version per language.
 //
-// Placeholders: any `src: null` photo or video without a `youtubeId` /
-// `vimeoId` renders a stand-in. To use real media, drop files in
-// `public/images/...` and set `src: '/images/your-file.jpg'`, and paste
-// the ID from a YouTube link (youtube.com/watch?v=THIS_PART) into `youtubeId`.
+// Photos: images come from src/data/images.js (see the README for adding
+// more). A gallery whose folder is empty shows placeholders instead.
+//
+// Videos: paste the ID from a YouTube link (youtube.com/watch?v=THIS_PART)
+// into `youtubeId`. Videos without an ID show a placeholder.
 
-// Builds `count` placeholder photos for a gallery.
-const placeholders = (count, label) =>
-  Array.from({ length: count }, (_, i) => ({
-    src: null,
+import { galleryImages, heroImage, introImage, logo } from './images'
+
+// Photos from `src/assets/images/galleries/<folder>`, numbered for their
+// alt text, or placeholders while the folder is still empty.
+const gallery = (folder, label, placeholderCount = 8) => {
+  const images = galleryImages(folder)
+  const photos = images.length
+    ? images
+    : Array.from({ length: placeholderCount }, () => ({ src: null, thumb: null }))
+  return photos.map((photo, i) => ({
+    ...photo,
     alt: { es: `${label.es} ${i + 1}`, en: `${label.en} ${i + 1}` },
   }))
+}
 
 export const site = {
   name: 'Montañistas de Washington',
-  // Set to e.g. '/images/logo.png' once the real logo is in public/images.
-  logo: null,
+  logo,
 }
 
 // Labels for buttons, forms and screen readers.
@@ -48,9 +56,10 @@ export const hero = {
     en: 'Experience nature like never before with our top-quality gear and guided tours.',
   },
   cta: { label: { es: 'Únete ya', en: 'Join us' }, href: '#contacto' },
-  // Background: a looping video (e.g. '/videos/hero.mp4') or an image.
+  // Background: an image, or a looping video (e.g. '/videos/hero.mp4') that
+  // plays over it once loaded.
   backgroundVideo: null,
-  backgroundImage: null,
+  backgroundImage: heroImage,
 }
 
 export const about = {
@@ -91,7 +100,13 @@ export const intro = {
     es: 'Explore la naturaleza con Montañistas de Washington',
     en: 'Explore the Great Outdoors with Montañistas de Washington',
   },
-  photo: { src: null, alt: { es: 'Grupo en la nieve', en: 'Group in the snow' } },
+  photo: {
+    src: introImage,
+    alt: {
+      es: 'Integrantes del grupo con bastones de senderismo en la nieve',
+      en: 'Group members with trekking poles on a snowy trail',
+    },
+  },
   paragraphs: {
     es: [
       'Montañistas de Washington es un grupo de entusiastas de las actividades al aire libre con sede en el estado de Washington. Nos encanta explorar rutas de senderismo, montañas y espacios al aire libre no solo en Washington, sino en todo Estados Unidos. Únase a nosotros en nuestras aventuras, ya sea una caminata tranquila o una escalada desafiante, y conéctese con una comunidad de amantes de las actividades al aire libre con ideas afines.',
@@ -108,25 +123,32 @@ export const galleries = {
       es: 'Nuestros momentos favoritos en la naturaleza',
       en: 'The Great Outdoors: Our Favorite Moments in Nature',
     },
-    photos: placeholders(8, { es: 'Momento', en: 'Moment' }),
+    photos: gallery('outdoors', { es: 'Momento en la naturaleza', en: 'Moment in nature' }),
   },
-  journey: {
+  trips: {
     title: {
       es: 'Un viaje por lo salvaje: una guía visual de nuestras excursiones',
       en: 'Journey Through the Wild: A Visual Guide to Our Outdoor Trips',
     },
-    photos: placeholders(16, { es: 'Viaje', en: 'Trip' }),
+    photos: gallery('trips', { es: 'Excursión de alta montaña', en: 'Mountaineering trip' }),
+  },
+  iceClimbing: {
+    title: {
+      es: 'Escalada en hielo en Ouray, Colorado',
+      en: 'Ice Climbing in Ouray, Colorado',
+    },
+    photos: gallery('ice-climbing', { es: 'Escalada en hielo', en: 'Ice climbing' }),
   },
   kids: {
     title: {
       es: 'Pequeños Senderistas porque los niños son lo más importante',
       en: 'Little Hikers, because kids are what matter most',
     },
-    photos: placeholders(16, { es: 'Pequeños Senderistas', en: 'Little Hikers' }),
+    photos: gallery('little-hikers', { es: 'Pequeños Senderistas', en: 'Little Hikers' }),
   },
   climbing: {
     title: { es: 'Noches de Escalada en Español', en: 'Climbing Nights in Spanish' },
-    photos: placeholders(16, { es: 'Noche de Escalada', en: 'Climbing Night' }),
+    photos: gallery('climbing-nights', { es: 'Noche de Escalada', en: 'Climbing Night' }),
   },
 }
 
