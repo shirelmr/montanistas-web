@@ -1,0 +1,63 @@
+/* Every photo is the same height and as wide as its own shape needs. Each
+   one snaps to the middle of the screen, with its neighbours peeking in. */
+.strip__track {
+  --height: clamp(220px, 46vw, 500px);
+  --gap: 16px;
+  position: relative;
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.strip__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Room before the first photo and after the last one, so those can be
+   centered too. */
+.strip__track::before,
+.strip__track::after {
+  content: '';
+  flex: 0 0 calc(50% - var(--gap));
+}
+
+/* --ratio (width / height) is set from the photo once it loads. Very wide
+   photos on narrow screens are trimmed at the sides to fit. */
+.strip__slide {
+  flex: 0 0 auto;
+  height: var(--height);
+  aspect-ratio: var(--ratio);
+  max-width: 88%;
+  scroll-snap-align: center;
+  overflow: hidden;
+  transition: aspect-ratio 0.3s ease;
+}
+
+.strip__controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.strip__arrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #444;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.strip__arrow:hover,
+.strip__arrow:focus-visible {
+  border-color: var(--orange);
+  color: var(--orange);
+}

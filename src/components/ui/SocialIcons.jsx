@@ -1,5 +1,5 @@
 import { FaFacebookF, FaInstagram, FaPinterestP, FaTiktok, FaYoutube } from 'react-icons/fa6'
-import { socialLinks } from '../../data/content'
+import { socialLinks } from '../../data/common'
 import './SocialIcons.css'
 
 const ICONS = {

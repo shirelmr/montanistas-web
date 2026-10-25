@@ -3,13 +3,13 @@ import { useLanguage } from '../../i18n/LanguageContext'
 import './MediaRows.css'
 
 // List of videos with a description beside each, alternating sides per row.
-export default function MediaRows({ heading, items, tone = 'dark', titleClassName = '' }) {
+export default function MediaRows({ heading, items, tone = 'dark' }) {
   const { t } = useLanguage()
 
   return (
     <section className={`media section section--${tone}`}>
       <div className="container--narrow">
-        <h2 className={`section-title ${titleClassName}`}>{t(heading)}</h2>
+        <h2 className="section-title">{t(heading)}</h2>
         <div className="media__rows">
           {items.map((item, i) => (
             <article

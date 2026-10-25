@@ -1,6 +1,6 @@
 import SocialIcons from '../ui/SocialIcons'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { socialBand } from '../../data/content'
+import { socialBand } from '../../data/common'
 import './SocialBand.css'
 
 export default function SocialBand() {

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FaYoutube, FaPlay } from 'react-icons/fa6'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { ui } from '../../data/content'
+import { ui } from '../../data/common'
 import './VideoEmbed.css'
 
 function embedUrl({ youtubeId, vimeoId }) {

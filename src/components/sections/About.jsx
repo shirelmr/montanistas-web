@@ -1,13 +1,22 @@
 import Logo from '../ui/Logo'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { about } from '../../data/content'
+import { about } from '../../data/home'
 import './About.css'
 
-export default function About() {
+// Glides down to the activity cards instead of jumping.
+function scrollToTarget(event) {
+  const target = document.querySelector(event.currentTarget.getAttribute('href'))
+  if (!target) return
+  event.preventDefault()
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' })
+}
+
+export default function About({ tone = 'grey' }) {
   const { t } = useLanguage()
 
   return (
-    <section className="about section section--grey" id="nosotros">
+    <section className={`about section section--${tone}`} id="nosotros">
       <div className="about__grid container">
         <Logo className="about__logo" />
         <div className="about__text">
@@ -18,7 +27,8 @@ export default function About() {
               <p key={line}>{line}</p>
             ))}
           </div>
-          <a className="btn about__cta" href={about.cta.href}>
+          <p className="about__description">{t(about.description)}</p>
+          <a className="btn about__cta" href={about.cta.href} onClick={scrollToTarget}>
             {t(about.cta.label)}
           </a>
         </div>

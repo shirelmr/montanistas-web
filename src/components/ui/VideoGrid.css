@@ -1,0 +1,30 @@
+.video-grid {
+  display: grid;
+  gap: 24px;
+}
+
+/* A single video stays a comfortable size instead of filling the page. */
+.video-grid:not(.video-grid--several) {
+  max-width: 760px;
+}
+
+.video-grid--several {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.video-grid__item {
+  margin: 0;
+}
+
+.video-grid__caption {
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .video-grid--several {
+    grid-template-columns: 1fr;
+  }
+}

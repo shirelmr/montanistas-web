@@ -1,13 +1,17 @@
+import { Link } from 'react-router'
 import Logo from '../ui/Logo'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { hero, ui } from '../../data/content'
+import { hero } from '../../data/home'
 import './Hero.css'
 
+// Full-screen opening banner of the home page.
 export default function Hero() {
   const { t } = useLanguage()
 
   return (
-    <header className="hero" id="top">
+    // data-header-reveal: the site header keeps its logo and menu hidden
+    // until this banner has been scrolled past.
+    <section className="hero" data-header-reveal>
       <div className="hero__media" aria-hidden="true">
         {hero.backgroundVideo ? (
           <video
@@ -27,17 +31,14 @@ export default function Hero() {
         <div className="hero__shade" />
       </div>
 
-      <a href="#top" className="hero__logo-link" aria-label={t(ui.home)}>
-        <Logo className="hero__logo" />
-      </a>
-
       <div className="hero__content container">
+        <Logo className="hero__logo" />
         <h1 className="hero__title">{t(hero.title)}</h1>
         <p className="hero__subtitle">{t(hero.subtitle)}</p>
-        <a className="btn" href={hero.cta.href}>
+        <Link className="btn" to={hero.cta.to}>
           {t(hero.cta.label)}
-        </a>
+        </Link>
       </div>
-    </header>
+    </section>
   )
 }

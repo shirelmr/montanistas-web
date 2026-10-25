@@ -1,0 +1,19 @@
+/* Home page sections meet on gentle diagonals instead of straight lines.
+   From the activities on, each section is pulled up over the one before by
+   --slant, and that strip is cut on a diagonal, alternating direction. The
+   transparent top border adds the same height back, so content doesn't
+   move. */
+.home {
+  --slant: clamp(20px, 3.5vw, 48px);
+}
+
+.home > section:nth-child(n + 3) {
+  position: relative;
+  margin-top: calc(-1 * var(--slant));
+  border-top: var(--slant) solid transparent;
+  clip-path: polygon(0 var(--slant), 100% 0, 100% 100%, 0 100%);
+}
+
+.home > section:nth-child(n + 3):nth-child(even) {
+  clip-path: polygon(0 0, 100% var(--slant), 100% 100%, 0 100%);
+}

@@ -1,28 +1,26 @@
-/* Full-screen opening banner: the photo runs edge to edge, with the logo
-   floating over it at the top. */
+/* Full-screen opening banner: the photo runs edge to edge under the
+   transparent site header, with the logo above the title. */
 .hero {
+  --v-depth: clamp(36px, 7vw, 110px);
+  /* The hero runs this much past the bottom of the first screen, so the
+     V only shows once you start scrolling. */
+  --below-fold: calc(var(--v-depth) + 48px);
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh + var(--below-fold));
   /* svh ignores the phone browser's address bar, so the hero doesn't jump. */
-  min-height: 100svh;
+  min-height: calc(100svh + var(--below-fold));
   background: #161616;
-}
-
-.hero__logo-link {
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  z-index: 2;
-  transform: translateX(-50%);
-}
-
-.hero__logo {
-  display: block;
-  width: clamp(96px, 11vw, 170px);
-  height: auto;
-  filter: drop-shadow(0 6px 16px rgb(0 0 0 / 0.45));
+  /* The bottom edge comes to a soft point in the middle (a wide "V"),
+     leading the eye down to the next section. */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--v-depth)),
+    50% 100%,
+    0 calc(100% - var(--v-depth))
+  );
 }
 
 .hero__media {
@@ -40,16 +38,15 @@
   object-fit: cover;
 }
 
-/* Layered tints: darker at the top behind the logo and language toggle,
-   a soft pool of shade behind the text, and a fade at the bottom that
-   blends the photo into the next section. */
+/* Layered tints: darker at the top behind the header, a soft pool of shade
+   behind the text, and a light fade towards the bottom edge. */
 .hero__shade {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(rgb(10 20 40 / 0.55), transparent 28%),
-    linear-gradient(transparent 70%, var(--bg-1)),
-    radial-gradient(ellipse 75% 45% at 50% 55%, rgb(10 20 40 / 0.45), transparent),
+    linear-gradient(transparent 65%, rgb(27 27 27 / 0.55)),
+    radial-gradient(ellipse 75% 50% at 50% 50%, rgb(10 20 40 / 0.45), transparent),
     rgb(10 20 40 / 0.15);
 }
 
@@ -61,8 +58,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 230px 0 120px;
+  /* Room for the fixed header at the top; the extra bottom padding keeps
+     the content centered in the first screen, not in the taller hero. */
+  padding: calc(var(--site-header-height, 72px) + 32px) 0 calc(96px + var(--below-fold));
   text-align: center;
+}
+
+.hero__logo {
+  width: clamp(110px, 12vw, 180px);
+  height: auto;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 6px 16px rgb(0 0 0 / 0.45));
 }
 
 .hero__title {
@@ -83,36 +89,29 @@
 }
 
 @media (max-width: 600px) {
-  .hero__logo-link {
-    top: 18px;
-  }
-
   .hero__content {
-    padding: 150px 0 96px;
+    padding: calc(var(--site-header-height, 72px) + 24px) 0 calc(80px + var(--below-fold));
   }
 }
 
 /* Phones held sideways: shrink the logo and padding so the title and
    button fit on the first screen. */
 @media (max-height: 500px) and (orientation: landscape) {
-  .hero__logo-link {
-    top: 12px;
+  .hero__content {
+    padding: calc(var(--site-header-height, 72px) + 8px) 0 calc(24px + var(--below-fold));
   }
 
   .hero__logo {
-    width: 84px;
-  }
-
-  .hero__content {
-    padding: 116px 0 32px;
+    width: 64px;
+    margin-bottom: 8px;
   }
 
   .hero__title {
-    font-size: clamp(28px, 4.4vw, 44px);
+    font-size: clamp(26px, 4.2vw, 40px);
   }
 
   .hero__subtitle {
-    margin: 10px 0 18px;
+    margin: 8px 0 14px;
     font-size: 15px;
   }
 }

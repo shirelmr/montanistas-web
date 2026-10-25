@@ -1,0 +1,61 @@
+.locations__videos {
+  margin-bottom: 40px;
+}
+
+.locations__place-videos {
+  margin-bottom: 32px;
+}
+
+/* One pill per place, in the same style as the language switch. */
+.locations__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.locations__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.locations__tab svg {
+  font-size: 18px;
+}
+
+.locations__tab:hover {
+  border-color: rgb(255 255 255 / 0.45);
+  color: #fff;
+}
+
+.locations__tab.is-active {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #fff;
+}
+
+.locations__tab:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.locations__panel {
+  animation: locations-fade 0.4s ease;
+}
+
+@keyframes locations-fade {
+  from {
+    opacity: 0;
+  }
+}

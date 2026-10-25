@@ -1,0 +1,118 @@
+/* Four across, two by two, or one per row, so no card is left alone on a
+   row. */
+.activities__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 999px) {
+  .activities__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 559px) {
+  .activities__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Photo card: the picture fills the card, a round arrow sits in the top
+   corner, and the title and text rest on a dark fade at the bottom. */
+.activity-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 3 / 4;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #222;
+  text-decoration: none;
+  isolation: isolate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover,
+.activity-card:focus-visible {
+  box-shadow: 0 18px 36px rgb(0 0 0 / 0.45);
+  transform: translateY(-4px);
+}
+
+.activity-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  transition: transform 0.6s ease;
+}
+
+.activity-card:hover .activity-card__bg {
+  transform: scale(1.06);
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    rgb(8 10 12 / 0.45) 58%,
+    rgb(8 10 12 / 0.88) 100%
+  );
+}
+
+.activity-card__arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #1b1b1b;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.activity-card:hover .activity-card__arrow,
+.activity-card:focus-visible .activity-card__arrow {
+  background: var(--orange);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.activity-card__content {
+  padding: 0 24px 26px;
+}
+
+.activity-card__title {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.05;
+  color: #fff;
+}
+
+.activity-card__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.82);
+}
+
+@media (max-width: 559px) {
+  .activity-card {
+    aspect-ratio: 4 / 3;
+  }
+}

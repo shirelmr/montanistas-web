@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { cookies } from '../../data/content'
+import { cookies } from '../../data/common'
 import './CookieBanner.css'
 
 const STORAGE_KEY = 'mdw-cookies-accepted'

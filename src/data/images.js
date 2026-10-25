@@ -3,30 +3,41 @@
 // running scripts/optimize_images.py into the right folder (see README).
 
 import logo from '../assets/images/brand/logo.webp'
-import heroImage from '../assets/images/hero/rainier-rope-team.webp'
-import introImage from '../assets/images/intro/group-snow-hike.webp'
 
-const GALLERIES = '../assets/images/galleries/'
+const ROOT = '../assets/images/'
 
-const fullSize = import.meta.glob('../assets/images/galleries/*/*.webp', {
-  eager: true,
-  import: 'default',
-})
-const thumbnails = import.meta.glob('../assets/images/galleries/*/thumbs/*.webp', {
+const allImages = import.meta.glob('../assets/images/**/*.webp', {
   eager: true,
   import: 'default',
 })
 
-// Photos in one gallery folder, ordered by file name (hence the 01-, 02- prefixes).
-export function galleryImages(folder) {
-  const prefix = `${GALLERIES}${folder}/`
-  return Object.keys(fullSize)
-    .filter((path) => path.startsWith(prefix))
-    .sort()
-    .map((path) => ({
-      src: fullSize[path],
-      thumb: thumbnails[path.replace(prefix, `${prefix}thumbs/`)] ?? null,
-    }))
+// Any image by its path inside src/assets/images, without the extension,
+// e.g. image('galleries/trips/16-summit-team').
+export function image(path) {
+  const url = allImages[`${ROOT}${path}.webp`]
+  if (!url) throw new Error(`Image not found: src/assets/images/${path}.webp`)
+  return url
 }
 
-export { logo, heroImage, introImage }
+// Photos in one gallery folder, ordered by file name (hence the 01-, 02-
+// prefixes), each with its thumbnail and a numbered alt text. While the
+// folder is empty it returns placeholders instead.
+export function gallery(folder, label, placeholderCount = 8) {
+  const prefix = `${ROOT}galleries/${folder}/`
+  const photos = Object.keys(allImages)
+    .filter((path) => path.startsWith(prefix) && !path.includes('/thumbs/'))
+    .sort()
+    .map((path) => ({
+      src: allImages[path],
+      thumb: allImages[path.replace(prefix, `${prefix}thumbs/`)] ?? null,
+    }))
+  const items = photos.length
+    ? photos
+    : Array.from({ length: placeholderCount }, () => ({ src: null, thumb: null }))
+  return items.map((photo, i) => ({
+    ...photo,
+    alt: { es: `${label.es} ${i + 1}`, en: `${label.en} ${i + 1}` },
+  }))
+}
+
+export { logo }

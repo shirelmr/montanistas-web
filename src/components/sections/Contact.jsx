@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { FiPaperclip } from 'react-icons/fi'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { contact } from '../../data/content'
+import { contact } from '../../data/common'
 import './Contact.css'
 
 // Monday-first index of today, to bold the current day in the hours table.

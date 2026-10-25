@@ -11,6 +11,22 @@ npm run build     # production build in dist/
 npm run preview   # serve the production build
 ```
 
+## Pages
+
+| Path                     | Page                                              |
+| ------------------------ | ------------------------------------------------- |
+| `/`                      | Home: featured video, activities, latest videos   |
+| `/alta-montana`          | Senderismo y Alta Montaña                         |
+| `/escalada`              | Escalada (ice climbing, Edgeworks, belay courses) |
+| `/pequenos-senderistas`  | Pequeños Senderistas                              |
+| `/comunidad`             | Comunidad (cleanups, tree planting, trail days)   |
+| `/en-los-medios`         | Fox report and interviews                         |
+| `/contacto`              | Contact form, emails and hours                    |
+
+When hosting the site, configure the host to serve `index.html` for every path
+(Vercel and Netlify do this for single-page apps), so links like `/escalada` work
+when opened directly.
+
 ## Project structure
 
 ```
@@ -20,23 +36,36 @@ scripts/
 src/
   assets/images/
     brand/                  logo
-    hero/                   background of the top banner
-    intro/                  photo next to the group description
+    hero/                   background of the home banner
+    intro/                  extra group photos
     galleries/<name>/       one folder per photo gallery, + thumbs/ previews
   components/
-    sections/               page sections (Hero, Contact, galleries…), each with its CSS
-    layout/                 pieces shown on every page (Footer, LanguageToggle, CookieBanner)
-    ui/                     small reusable pieces (Photo, VideoEmbed, Logo, SocialIcons)
+    layout/                 on every page: Header (menu), Footer, CookieBanner…
+    sections/               building blocks of the pages (Hero, galleries, videos…)
+    ui/                     small reusable pieces (Photo, VideoEmbed, Logo…)
   data/
-    content.js              all text, links, videos and gallery titles
+    activities.js           one entry per activity page (text, photos, videos)
+    home.js                 home page: featured video, latest videos, about
+    media.js                "En los medios" page
+    common.js               shared text: labels, contact details, footer
+    videos.js               every video and its YouTube ID, in one place
+    navigation.js           main menu
     images.js               loads the images from src/assets/images
+  hooks/                    small shared behaviours (page title, scroll state)
   i18n/                     language switching (Spanish / English)
+  pages/                    one component per page
+  router.jsx                which page shows at which path
   styles/global.css         colors, fonts and shared styles
 ```
 
 ## Editing content
 
-All text, emails, hours, social links and videos are in [`src/data/content.js`](src/data/content.js). You don't need to touch the components to update the site.
+All text lives in [`src/data/`](src/data/), one file per page. You don't need to
+touch the components to update the site.
+
+- **Add an activity:** add an entry to `activities.js`. It gets its own page, a
+  menu link and a card on the home page automatically.
+- **Change what's new on the home page:** edit `recent` in `home.js`.
 
 ### Languages
 
@@ -51,13 +80,16 @@ The site is in Spanish and English, switched with the ES / EN toggle in the top-
 Galleries show every image in their folder under `src/assets/images/galleries/`, ordered by
 file name:
 
-| Folder            | Gallery                             |
-| ----------------- | ----------------------------------- |
-| `outdoors`        | Nuestros momentos favoritos         |
-| `trips`           | Un viaje por lo salvaje             |
-| `ice-climbing`    | Escalada en hielo en Ouray          |
-| `little-hikers`   | Pequeños Senderistas                |
-| `climbing-nights` | Noches de Escalada                  |
+| Folder               | Gallery                                    |
+| -------------------- | ------------------------------------------ |
+| `outdoors`           | Nuestros momentos favoritos (home)         |
+| `trips`              | Un viaje por lo salvaje (Montaña)          |
+| `ice-climbing`       | Escalada en hielo en Ouray (Escalada)      |
+| `edgeworks-seattle`  | Edgeworks, Seattle tab (Escalada)          |
+| `edgeworks-tacoma`   | Edgeworks, Tacoma tab (Escalada)           |
+| `edgeworks-bellevue` | Edgeworks, Bellevue tab (Escalada)         |
+| `belay-courses`      | Cursos de belay (Escalada)                 |
+| `little-hikers`      | Pequeños Senderistas                       |
 
 A folder with no photos shows placeholders. Phone photos are large and carry the location where
 they were taken, so always add them through the script, which resizes them, converts them to
@@ -72,14 +104,14 @@ python3 scripts/optimize_images.py ~/Desktop/media/IMG_1234.HEIC \
 Name files `NN-short-description.webp` (lowercase, dashes) so the order is easy to control.
 HEIC photos from an iPhone need a Mac to convert. Original photos are not kept in the repo.
 
-To change the hero, intro photo or logo, replace the file in its folder (keep the name) or
-update the import in [`src/data/images.js`](src/data/images.js). For the hero, use
-`--max-size 2400`.
+Banner and card photos are picked in the data files with `image('galleries/trips/16-summit-team')`
+(the path inside `src/assets/images`, without `.webp`). For the home banner, use `--max-size 2400`.
 
 ### Videos
 
-Each video has a `youtubeId` (or `vimeoId` for the featured video). Paste the ID from the link,
-e.g. `https://www.youtube.com/watch?v=abc123XYZ` → `youtubeId: 'abc123XYZ'`.
+All videos are listed once in [`src/data/videos.js`](src/data/videos.js). Paste the ID from
+the link, e.g. `https://www.youtube.com/watch?v=abc123XYZ` → `youtubeId: 'abc123XYZ'`, and the
+video works on every page that shows it.
 Videos only load the player once they're clicked, so the page stays fast.
 
 ### Forms

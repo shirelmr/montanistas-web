@@ -1,0 +1,255 @@
+/* The header has no bar: the menu words float over the page on their own.
+   Its layout class (centered, row, stacked, compact) is chosen in
+   Header.jsx depending on whether the links fit. */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  padding: 16px 0;
+  pointer-events: none;
+}
+
+/* Once scrolled, a soft dark fade from the top edge keeps the words
+   readable over light photos. It has no edges, so it isn't a bar. */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: calc(100% + 48px);
+  background: linear-gradient(rgb(10 10 10 / 0.78), rgb(10 10 10 / 0.45) 55%, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.site-header.is-scrolled::before {
+  opacity: 1;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(1240px, 100% - 32px);
+  margin-inline: auto;
+}
+
+.site-header__nav,
+.site-header__lang {
+  pointer-events: auto;
+}
+
+.site-header__nav {
+  position: relative;
+}
+
+.site-header .lang-toggle {
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background: rgb(18 18 18 / 0.55);
+}
+
+/* Over the home photo only the language switch shows. The menu floats in
+   once the photo has been scrolled past, or as soon as a keyboard user
+   tabs into it (:focus-visible ignores taps and clicks, so a link tapped
+   on the previous page doesn't keep it showing). */
+.site-header__nav {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.site-header.is-concealed:not(:has(:focus-visible)) .site-header__nav {
+  opacity: 0;
+  transform: translateY(-14px);
+  pointer-events: none;
+}
+
+/* ---- The links in one line ---- */
+
+.site-header__links {
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Small spaced capitals; the current page is underlined in orange. */
+.site-header__link {
+  position: relative;
+  display: block;
+  padding: 9px 13px;
+  color: rgb(255 255 255 / 0.86);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.75);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.site-header__link:hover,
+.site-header__link.active {
+  color: #fff;
+}
+
+.site-header__link.active::after {
+  content: '';
+  position: absolute;
+  right: 13px;
+  bottom: 2px;
+  left: 13px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--orange);
+}
+
+/* Medium screens: regular letters take less room than spaced capitals. */
+@media (max-width: 1179px) {
+  .site-header__link {
+    padding: 8px;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .site-header__link.active::after {
+    right: 8px;
+    left: 8px;
+  }
+}
+
+/* Invisible one-line copy used to measure how much room the links need. */
+.site-header__links--measure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-header__menu-btn {
+  display: none;
+}
+
+/* ---- Layouts ---- */
+
+/* Links centered on the page, language switch on the right. */
+.site-header--centered .site-header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.site-header--centered .site-header__nav {
+  grid-column: 2;
+}
+
+.site-header--centered .site-header__lang {
+  grid-column: 3;
+  justify-self: end;
+}
+
+/* Links centered in the room left beside the language switch. */
+.site-header--row .site-header__nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Language switch on top, links on their own line across the page. */
+.site-header--stacked,
+.site-header--compact {
+  padding: 12px 0;
+}
+
+.site-header--stacked .site-header__inner {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.site-header--stacked .site-header__lang {
+  order: -1;
+  align-self: flex-end;
+}
+
+.site-header--stacked .site-header__nav {
+  display: flex;
+  justify-content: center;
+}
+
+/* Small screens: the current page, also just floating words, opens a
+   drop-down list instead of squeezing every link onto the top. */
+.site-header--compact .site-header__menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.75);
+  cursor: pointer;
+}
+
+.site-header__chevron {
+  font-size: 17px;
+  filter: drop-shadow(0 1px 4px rgb(0 0 0 / 0.6));
+  transition: transform 0.3s ease;
+}
+
+.is-open .site-header__chevron {
+  transform: rotate(180deg);
+}
+
+/* The list itself needs a background to be readable. */
+.site-header--compact .site-header__links:not(.site-header__links--measure) {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  flex-direction: column;
+  min-width: 240px;
+  padding: 8px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 16px;
+  background: rgb(16 18 20 / 0.94);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.4);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s;
+}
+
+.site-header--compact.is-open .site-header__links:not(.site-header__links--measure) {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.site-header--compact .site-header__links:not(.site-header__links--measure) .site-header__link {
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-shadow: none;
+  text-transform: none;
+}
+
+.site-header--compact .site-header__links:not(.site-header__links--measure) .site-header__link:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.site-header--compact .site-header__links:not(.site-header__links--measure) .site-header__link.active {
+  color: var(--orange);
+}
+
+.site-header--compact .site-header__links:not(.site-header__links--measure) .site-header__link.active::after {
+  display: none;
+}

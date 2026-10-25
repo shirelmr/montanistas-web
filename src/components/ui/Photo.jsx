@@ -12,9 +12,9 @@ const TONES = [
 ]
 
 // Renders an image, or a labelled placeholder when there is no `src` yet.
-export default function Photo({ src, alt, index = 0, className = '' }) {
+export default function Photo({ src, alt, index = 0, className = '', onLoad }) {
   if (src) {
-    return <img className={`photo ${className}`} src={src} alt={alt} loading="lazy" />
+    return <img className={`photo ${className}`} src={src} alt={alt} loading="lazy" onLoad={onLoad} />
   }
 
   const [from, to] = TONES[index % TONES.length]
@@ -22,8 +22,7 @@ export default function Photo({ src, alt, index = 0, className = '' }) {
     <div
       className={`photo photo--placeholder ${className}`}
       style={{ '--from': from, '--to': to }}
-      role="img"
-      aria-label={alt}
+      {...(alt ? { role: 'img', 'aria-label': alt } : { 'aria-hidden': true })}
     >
       <TbMountain className="photo__icon" aria-hidden="true" />
       <span className="photo__label">{alt}</span>

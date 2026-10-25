@@ -1,15 +1,15 @@
 import VideoEmbed from '../ui/VideoEmbed'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { interviews } from '../../data/content'
+import { interviews } from '../../data/media'
 import './Interviews.css'
 
-export default function Interviews() {
+export default function Interviews({ tone = 'grey' }) {
   const { t } = useLanguage()
 
   return (
-    <section className="interviews section section--grey">
+    <section className={`interviews section section--${tone}`}>
       <div className="container--narrow">
-        <h2 className="section-title section-title--white">{t(interviews.heading)}</h2>
+        <h2 className="section-title">{t(interviews.heading)}</h2>
         <div className="interviews__rows">
           {interviews.rows.map((row) => (
             <div

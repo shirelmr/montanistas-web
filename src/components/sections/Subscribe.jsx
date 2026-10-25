@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { subscribe } from '../../data/content'
+import { subscribe } from '../../data/common'
 import './Subscribe.css'
 
 // Like the contact form, this only confirms on screen until it's wired to

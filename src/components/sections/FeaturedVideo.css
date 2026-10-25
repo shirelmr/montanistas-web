@@ -1,15 +1,15 @@
 .featured .section-title {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-.featured__credits {
+.featured__text {
   max-width: 720px;
-  margin: 0 auto 40px;
-  font-size: 14px;
+  margin: 0 auto 32px;
+  font-size: 15px;
   text-align: center;
   color: var(--text-muted);
 }
 
-.featured__credits p {
+.featured__text p {
   margin: 0;
 }
