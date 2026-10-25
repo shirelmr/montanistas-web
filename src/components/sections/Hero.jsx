@@ -8,12 +8,6 @@ export default function Hero() {
 
   return (
     <header className="hero" id="top">
-      <div className="hero__bar">
-        <a href="#top" className="hero__logo-link" aria-label={t(ui.home)}>
-          <Logo className="hero__logo" />
-        </a>
-      </div>
-
       <div className="hero__media" aria-hidden="true">
         {hero.backgroundVideo ? (
           <video
@@ -32,6 +26,10 @@ export default function Hero() {
         )}
         <div className="hero__shade" />
       </div>
+
+      <a href="#top" className="hero__logo-link" aria-label={t(ui.home)}>
+        <Logo className="hero__logo" />
+      </a>
 
       <div className="hero__content container">
         <h1 className="hero__title">{t(hero.title)}</h1>

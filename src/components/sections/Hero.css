@@ -1,24 +1,20 @@
+/* Full-screen opening banner: the photo runs edge to edge, with the logo
+   floating over it at the top. */
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: min(82vh, 820px);
+  min-height: 100vh;
   /* svh ignores the phone browser's address bar, so the hero doesn't jump. */
-  min-height: min(82svh, 820px);
-  background: #161616;
-}
-
-.hero__bar {
-  position: relative;
-  z-index: 2;
-  height: 56px;
+  min-height: 100svh;
   background: #161616;
 }
 
 .hero__logo-link {
   position: absolute;
-  top: 18px;
+  top: 24px;
   left: 50%;
+  z-index: 2;
   transform: translateX(-50%);
 }
 
@@ -26,12 +22,12 @@
   display: block;
   width: clamp(96px, 11vw, 170px);
   height: auto;
-  filter: drop-shadow(0 4px 10px rgb(0 0 0 / 0.35));
+  filter: drop-shadow(0 6px 16px rgb(0 0 0 / 0.45));
 }
 
 .hero__media {
   position: absolute;
-  inset: 56px 0 0;
+  inset: 0;
   overflow: hidden;
   background: linear-gradient(180deg, #24395c 0%, #3f5f8f 35%, #8aa3c4 70%, #dce5ef 100%);
 }
@@ -44,13 +40,17 @@
   object-fit: cover;
 }
 
-/* Darkens the photo behind the text so the title stays readable. */
+/* Layered tints: darker at the top behind the logo and language toggle,
+   a soft pool of shade behind the text, and a fade at the bottom that
+   blends the photo into the next section. */
 .hero__shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgb(10 20 40 / 0.15), rgb(10 20 40 / 0.5) 55%, rgb(10 20 40 / 0.25)),
-    rgb(10 20 40 / 0.1);
+    linear-gradient(rgb(10 20 40 / 0.55), transparent 28%),
+    linear-gradient(transparent 70%, var(--bg-1)),
+    radial-gradient(ellipse 75% 45% at 50% 55%, rgb(10 20 40 / 0.45), transparent),
+    rgb(10 20 40 / 0.15);
 }
 
 .hero__content {
@@ -61,7 +61,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 200px 0 120px;
+  padding: 230px 0 120px;
   text-align: center;
 }
 
@@ -72,27 +72,31 @@
   font-size: clamp(36px, 5.2vw, 72px);
   line-height: 1.1;
   color: var(--gold);
-  text-shadow: 0 2px 12px rgb(0 0 0 / 0.25);
+  text-shadow: 0 2px 16px rgb(0 0 0 / 0.45);
 }
 
 .hero__subtitle {
   max-width: 1120px;
   margin: 16px 0 24px;
   font-size: clamp(16px, 1.6vw, 22px);
-  text-shadow: 0 1px 6px rgb(0 0 0 / 0.5);
+  text-shadow: 0 1px 8px rgb(0 0 0 / 0.6);
 }
 
 @media (max-width: 600px) {
+  .hero__logo-link {
+    top: 18px;
+  }
+
   .hero__content {
-    padding: 130px 0 72px;
+    padding: 150px 0 96px;
   }
 }
 
 /* Phones held sideways: shrink the logo and padding so the title and
    button fit on the first screen. */
 @media (max-height: 500px) and (orientation: landscape) {
-  .hero {
-    min-height: 100svh;
+  .hero__logo-link {
+    top: 12px;
   }
 
   .hero__logo {
@@ -100,7 +104,7 @@
   }
 
   .hero__content {
-    padding: 72px 0 32px;
+    padding: 116px 0 32px;
   }
 
   .hero__title {
