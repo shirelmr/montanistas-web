@@ -17,16 +17,16 @@
 }
 
 .footer__social {
-  max-width: 120px;
+  flex-wrap: nowrap;
 }
 
 @media (max-width: 640px) {
+  .footer {
+    padding: 36px 0;
+  }
+
   .footer__inner {
     flex-direction: column-reverse;
     text-align: center;
-  }
-
-  .footer__social {
-    max-width: none;
   }
 }

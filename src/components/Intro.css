@@ -29,13 +29,19 @@
   margin: 0 0 48px;
 }
 
-@media (max-width: 760px) {
+/* Stack before the photo gets too small next to the paragraph. */
+@media (max-width: 900px) {
   .intro__grid {
     grid-template-columns: 1fr;
     gap: 32px;
+    max-width: 680px;
+  }
+
+  .intro__photo {
+    aspect-ratio: 16 / 9;
   }
 
   .intro__text p {
-    margin-bottom: 24px;
+    margin-bottom: 0;
   }
 }

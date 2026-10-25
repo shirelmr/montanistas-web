@@ -36,12 +36,17 @@
 
 @media (max-width: 760px) {
   .media__rows {
-    gap: 48px;
+    gap: 40px;
   }
 
   .media__row {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .media__title {
+    margin-bottom: 8px;
+    font-size: 18px;
   }
 
   .media__row--reverse .media__video {

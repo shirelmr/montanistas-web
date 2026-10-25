@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   min-height: min(82vh, 820px);
+  /* svh ignores the phone browser's address bar, so the hero doesn't jump. */
+  min-height: min(82svh, 820px);
   background: #161616;
 }
 
@@ -22,7 +24,7 @@
 
 .hero__logo {
   display: block;
-  width: clamp(110px, 11vw, 170px);
+  width: clamp(96px, 11vw, 170px);
   height: auto;
   filter: drop-shadow(0 4px 10px rgb(0 0 0 / 0.35));
 }
@@ -80,6 +82,31 @@
 
 @media (max-width: 600px) {
   .hero__content {
-    padding: 150px 0 80px;
+    padding: 130px 0 72px;
+  }
+}
+
+/* Phones held sideways: shrink the logo and padding so the title and
+   button fit on the first screen. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__logo {
+    width: 84px;
+  }
+
+  .hero__content {
+    padding: 72px 0 32px;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 4.4vw, 44px);
+  }
+
+  .hero__subtitle {
+    margin: 10px 0 18px;
+    font-size: 15px;
   }
 }

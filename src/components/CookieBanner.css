@@ -48,14 +48,22 @@
   background: #f1f1f1;
 }
 
+/* On phones it becomes a compact bar along the bottom edge. */
 @media (max-width: 480px) {
   .cookies {
-    right: 16px;
-    bottom: 16px;
-    padding: 18px;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    padding: 16px;
+  }
+
+  .cookies__title {
+    font-size: 18px;
   }
 
   .cookies__text {
-    font-size: 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 1.5;
   }
 }

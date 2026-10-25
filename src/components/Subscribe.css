@@ -34,6 +34,12 @@
   color: var(--gold);
 }
 
+@media (max-width: 640px) {
+  .subscribe {
+    padding: 56px 0;
+  }
+}
+
 @media (max-width: 480px) {
   .subscribe__form {
     flex-direction: column;

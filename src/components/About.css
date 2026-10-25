@@ -51,6 +51,10 @@
 }
 
 @media (max-width: 760px) {
+  .about {
+    padding: 56px 0;
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -59,7 +63,12 @@
   }
 
   .about__logo {
-    max-width: 260px;
+    max-width: 220px;
+  }
+
+  .about__lines {
+    margin-inline: auto;
+    font-size: 16px;
   }
 
   .about__title {

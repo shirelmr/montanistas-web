@@ -12,6 +12,14 @@
   background: rgb(18 18 18 / 0.78);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 16px rgb(0 0 0 / 0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Keyboard users can still reach it while it's tucked away. */
+.lang-toggle.is-hidden:not(:focus-within) {
+  opacity: 0;
+  transform: translateY(calc(-100% - 16px));
+  pointer-events: none;
 }
 
 .lang-toggle__icon {
@@ -45,4 +53,22 @@
 .lang-toggle__btn:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 1px;
+}
+
+/* Compact version so it never touches the centered logo on small phones. */
+@media (max-width: 480px) {
+  .lang-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 3px;
+  }
+
+  .lang-toggle__icon {
+    display: none;
+  }
+
+  .lang-toggle__btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
 }
