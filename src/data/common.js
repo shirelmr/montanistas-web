@@ -22,6 +22,12 @@ export const ui = {
   next: { es: 'Siguiente', en: 'Next' },
   play: { es: 'Reproducir', en: 'Play' },
   videoPending: { es: 'Video pendiente', en: 'Video coming soon' },
+  sending: { es: 'Enviando…', en: 'Sending…' },
+  sendFailed: {
+    es: 'No se pudo enviar. Intenta de nuevo o escríbenos a uno de nuestros correos.',
+    en: "It couldn't be sent. Try again or write to one of our emails.",
+  },
+  botField: { es: 'No llenes este campo', en: "Don't fill this out" },
   rightsReserved: { es: 'Todos los derechos reservados.', en: 'All Rights Reserved.' },
 }
 
@@ -81,6 +87,13 @@ export const contact = {
   },
   attachFiles: { es: 'Adjuntar archivos', en: 'Attach Files' },
   attachments: { es: 'Archivos adjuntos', en: 'Attachments' },
+  // Netlify Forms takes up to 8 MB per message, text included.
+  maxFiles: 3,
+  maxFileMB: 7,
+  attachLimit: {
+    es: 'Hasta 3 archivos y 7 MB en total.',
+    en: 'Up to 3 files, 7 MB in total.',
+  },
   send: { es: 'Enviar', en: 'Send' },
   thanks: {
     es: '¡Gracias por escribirnos! Te responderemos pronto.',

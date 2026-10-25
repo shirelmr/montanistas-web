@@ -1,26 +1,24 @@
-import { useState } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { subscribe } from '../../data/common'
+import useNetlifyForm from '../../hooks/useNetlifyForm'
+import { subscribe, ui } from '../../data/common'
 import './Subscribe.css'
 
-// Like the contact form, this only confirms on screen until it's wired to
-// a mailing list service.
+// Sign-ups go to Netlify Forms, where the list of emails can be downloaded.
 export default function Subscribe() {
   const { t } = useLanguage()
-  const [done, setDone] = useState(false)
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    event.currentTarget.reset()
-    setDone(true)
-  }
+  const { status, submit } = useNetlifyForm('subscribe')
 
   return (
     <section className="subscribe section section--dark">
       <div className="container">
         <h2 className="subscribe__heading">{t(subscribe.heading)}</h2>
         <p className="subscribe__text">{t(subscribe.text)}</p>
-        <form className="subscribe__form" onSubmit={handleSubmit}>
+        <form className="subscribe__form" onSubmit={(event) => submit(event)}>
+          <div className="visually-hidden" aria-hidden="true">
+            <label>
+              {t(ui.botField)} <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
           <label className="visually-hidden" htmlFor="subscribe-email">Email</label>
           <input
             id="subscribe-email"
@@ -31,11 +29,18 @@ export default function Subscribe() {
             autoComplete="email"
             required
           />
-          <button type="submit" className="btn">{t(subscribe.button)}</button>
+          <button type="submit" className="btn" disabled={status === 'sending'}>
+            {t(status === 'sending' ? ui.sending : subscribe.button)}
+          </button>
         </form>
-        {done && (
-          <p className="subscribe__thanks" role="status">
+        {status === 'sent' && (
+          <p className="subscribe__status" role="status">
             {t(subscribe.thanks)}
+          </p>
+        )}
+        {status === 'error' && (
+          <p className="subscribe__status is-error" role="alert">
+            {t(ui.sendFailed)}
           </p>
         )}
       </div>

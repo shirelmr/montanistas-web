@@ -1,25 +1,39 @@
 import { useRef, useState } from 'react'
 import { FiPaperclip } from 'react-icons/fi'
 import { useLanguage } from '../../i18n/LanguageContext'
-import { contact } from '../../data/common'
+import useNetlifyForm from '../../hooks/useNetlifyForm'
+import { contact, ui } from '../../data/common'
 import './Contact.css'
 
 // Monday-first index of today, to bold the current day in the hours table.
 const today = (new Date().getDay() + 6) % 7
 
-// The form has no backend yet: submitting just shows a thank-you message.
-// Hook `handleSubmit` up to an email service (Formspree, EmailJS…) to send it.
+// Messages go to Netlify Forms, which emails them to the group.
 export default function Contact() {
   const { t } = useLanguage()
   const fileInputRef = useRef(null)
   const [files, setFiles] = useState([])
-  const [sent, setSent] = useState(false)
+  const [filesTooBig, setFilesTooBig] = useState(false)
+  const { status, submit } = useNetlifyForm('contact')
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    event.currentTarget.reset()
-    setFiles([])
-    setSent(true)
+  // A selection over the limit is dropped whole, with a note saying why.
+  const pickFiles = (event) => {
+    const picked = [...event.target.files]
+    const bytes = picked.reduce((sum, file) => sum + file.size, 0)
+    const fits = picked.length <= contact.maxFiles && bytes <= contact.maxFileMB * 1024 * 1024
+    setFiles(fits ? picked : [])
+    setFilesTooBig(!fits)
+    if (!fits) event.target.value = ''
+  }
+
+  const handleSubmit = async (event) => {
+    const sent = await submit(event, (data) => {
+      files.forEach((file, i) => data.set(`attachment${i + 1}`, file))
+    })
+    if (sent) {
+      setFiles([])
+      setFilesTooBig(false)
+    }
   }
 
   const days = t(contact.days)
@@ -31,6 +45,12 @@ export default function Contact() {
         <p className="contact__intro">{t(contact.intro)}</p>
 
         <form className="contact__form" onSubmit={handleSubmit}>
+          <div className="visually-hidden" aria-hidden="true">
+            <label>
+              {t(ui.botField)} <input name="bot-field" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
+
           <label className="visually-hidden" htmlFor="contact-name">{t(contact.fields.name)}</label>
           <input
             id="contact-name"
@@ -67,20 +87,25 @@ export default function Contact() {
             <span>
               {t(contact.attachments)} ({files.length})
             </span>
-            <input
-              ref={fileInputRef}
-              type="file"
-              name="attachments"
-              multiple
-              hidden
-              onChange={(event) => setFiles([...event.target.files])}
-            />
+            <input ref={fileInputRef} type="file" multiple hidden onChange={pickFiles} />
           </div>
+          {filesTooBig && (
+            <p className="contact__status is-error" role="alert">
+              {t(contact.attachLimit)}
+            </p>
+          )}
 
-          <button type="submit" className="btn contact__send">{t(contact.send)}</button>
-          {sent && (
-            <p className="contact__thanks" role="status">
+          <button type="submit" className="btn contact__send" disabled={status === 'sending'}>
+            {t(status === 'sending' ? ui.sending : contact.send)}
+          </button>
+          {status === 'sent' && (
+            <p className="contact__status" role="status">
               {t(contact.thanks)}
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="contact__status is-error" role="alert">
+              {t(ui.sendFailed)}
             </p>
           )}
         </form>

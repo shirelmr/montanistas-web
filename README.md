@@ -23,14 +23,16 @@ npm run preview   # serve the production build
 | `/en-los-medios`         | Fox report and interviews                         |
 | `/contacto`              | Contact form, emails and hours                    |
 
-When hosting the site, configure the host to serve `index.html` for every path
-(Vercel and Netlify do this for single-page apps), so links like `/escalada` work
-when opened directly.
+## Hosting
+
+The site is hosted on Netlify, connected to this repo: every push to `main` publishes it.
+[`netlify.toml`](netlify.toml) holds the build settings and makes every address serve
+`index.html`, so links like `/escalada` work when opened directly.
 
 ## Project structure
 
 ```
-public/                     files served as-is (favicon)
+public/                     files served as-is (favicon, form list for Netlify)
 scripts/
   optimize_images.py        prepares photos for the web (see "Adding photos")
 src/
@@ -51,7 +53,7 @@ src/
     videos.js               every video and its YouTube ID, in one place
     navigation.js           main menu
     images.js               loads the images from src/assets/images
-  hooks/                    small shared behaviours (page title, scroll state)
+  hooks/                    small shared behaviours (page title, scroll state, forms)
   i18n/                     language switching (Spanish / English)
   pages/                    one component per page
   router.jsx                which page shows at which path
@@ -116,6 +118,15 @@ Videos only load the player once they're clicked, so the page stays fast.
 
 ### Forms
 
-The contact and subscribe forms only show a confirmation on screen for now. To actually receive
-messages, connect `handleSubmit` in `src/components/sections/Contact.jsx` and
-`src/components/sections/Subscribe.jsx` to a service such as Formspree or EmailJS.
+The contact and subscribe forms are sent to **Netlify Forms** by
+[`src/hooks/useNetlifyForm.js`](src/hooks/useNetlifyForm.js). Netlify only finds forms written in
+plain HTML, so [`public/netlify-forms.html`](public/netlify-forms.html) lists both forms and their
+fields. When adding or renaming a field, change it there too.
+
+In the Netlify dashboard:
+
+- **Forms** shows every message and sign-up, and can download them as CSV.
+- **Project configuration → Notifications → Emails and webhooks** chooses who gets an email for
+  each new message.
+
+Forms only work on the published site; running locally, sending shows an error.

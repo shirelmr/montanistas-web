@@ -76,9 +76,18 @@
   margin-top: 8px;
 }
 
-.contact__thanks {
+.contact__status {
   margin: 0;
   color: var(--gold);
+}
+
+.contact__status.is-error {
+  color: var(--error);
+}
+
+.contact__send:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 .contact__visit {

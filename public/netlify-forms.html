@@ -1,0 +1,31 @@
+<!doctype html>
+<!--
+  Nobody visits this page. Netlify only finds forms written in plain HTML, and
+  ours are drawn by React, so this file lists them for Netlify to read at
+  deploy time. Field names here must match the ones in Contact.jsx and
+  Subscribe.jsx, or Netlify drops those fields.
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Formularios</title>
+  </head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <textarea name="message"></textarea>
+      <!-- Netlify takes one file per field, so the form sends up to three. -->
+      <input name="attachment1" type="file" />
+      <input name="attachment2" type="file" />
+      <input name="attachment3" type="file" />
+    </form>
+
+    <form name="subscribe" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="email" type="email" />
+    </form>
+  </body>
+</html>

@@ -29,9 +29,18 @@
   background: #1e1e1e;
 }
 
-.subscribe__thanks {
+.subscribe__status {
   margin: 16px 0 0;
   color: var(--gold);
+}
+
+.subscribe__status.is-error {
+  color: var(--error);
+}
+
+.subscribe__form .btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 @media (max-width: 640px) {
