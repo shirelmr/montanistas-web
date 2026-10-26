@@ -7,6 +7,14 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Netlify's own address can't be removed, so send its visitors to the real
+# domain, on the same page. It has to come before the rule below.
+[[redirects]]
+  from = "https://montanistas-de-washington.netlify.app/*"
+  to = "https://montanistasdewashington.org/:splat"
+  status = 301
+  force = true
+
 # React draws every page, so any address (like /escalada) serves index.html
 # and the router picks the page. Real files, like the images, still win.
 [[redirects]]

@@ -25,9 +25,15 @@ npm run preview   # serve the production build
 
 ## Hosting
 
-The site is hosted on Netlify, connected to this repo: every push to `main` publishes it.
-[`netlify.toml`](netlify.toml) holds the build settings and makes every address serve
-`index.html`, so links like `/escalada` work when opened directly.
+The site is hosted on Netlify at **montanistasdewashington.org**, connected to this repo: every
+push to `main` publishes it. [`netlify.toml`](netlify.toml) holds the build settings, sends
+visitors of the Netlify address (`montanistas-de-washington.netlify.app`) to the domain, and makes
+every address serve `index.html`, so links like `/escalada` work when opened directly.
+
+The domain is registered at Namecheap, which also hosts the group's email. Its DNS stays at
+Namecheap: an `A` record for `@` points to Netlify (`75.2.60.5`) and a `CNAME` for `www` points to
+`montanistas-de-washington.netlify.app`. Don't switch the nameservers to Netlify, or the email
+stops working.
 
 ## Project structure
 
