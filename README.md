@@ -97,7 +97,8 @@ file name:
 | `edgeworks-tacoma`   | Edgeworks, Tacoma tab (Escalada)           |
 | `edgeworks-bellevue` | Edgeworks, Bellevue tab (Escalada)         |
 | `belay-courses`      | Cursos de belay (Escalada)                 |
-| `little-hikers`      | Pequeños Senderistas                       |
+| `little-hikers`      | Pequeños Senderistas, photos with the flag |
+| `little-hikers-<outing>` | Nuestras salidas tabs (Pequeños Senderistas): `aquarium`, `tree-planting`, `trails`, `ballard-locks`, `seattle`, `beach-lake`, `celebrations`, `snow` |
 
 A folder with no photos shows placeholders. Phone photos are large and carry the location where
 they were taken, so always add them through the script, which resizes them, converts them to
@@ -109,7 +110,8 @@ python3 scripts/optimize_images.py ~/Desktop/media/IMG_1234.HEIC \
     src/assets/images/galleries/little-hikers/01-trail-day.webp --thumb
 ```
 
-Name files `NN-short-description.webp` (lowercase, dashes) so the order is easy to control.
+Name files `NN-short-description.webp` (lowercase, dashes), or `NN-` plus the phone's photo number
+for big batches, so the order is easy to control.
 HEIC photos from an iPhone need a Mac to convert. Original photos are not kept in the repo.
 
 Banner and card photos are picked in the data files with `image('galleries/trips/16-summit-team')`

@@ -54,6 +54,38 @@
   animation: locations-fade 0.4s ease;
 }
 
+/* On phones the pills stay on one line that slides sideways, out to the
+   screen edges, instead of stacking into a tall block. */
+@media (max-width: 640px) {
+  .locations__tabs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-inline: -16px;
+    padding: 2px 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .locations__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Centered while they fit, without cutting off the first one when they don't. */
+  .locations__tab:first-child {
+    margin-left: auto;
+  }
+
+  .locations__tab:last-child {
+    margin-right: auto;
+  }
+
+  .locations__tab {
+    flex-shrink: 0;
+    padding: 9px 16px;
+    font-size: 14px;
+  }
+}
+
 @keyframes locations-fade {
   from {
     opacity: 0;

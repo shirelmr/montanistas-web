@@ -16,6 +16,12 @@ import { videos } from './videos'
 
 const VIDEOS_HEADING = { es: 'Videos', en: 'Videos' }
 
+// A Pequeños Senderistas outing tab, with the photos from its own folder.
+const outing = (name, folder) => ({
+  name,
+  photos: gallery(`little-hikers-${folder}`, name),
+})
+
 export const activities = [
   {
     slug: 'alta-montana',
@@ -212,9 +218,8 @@ export const activities = [
       es: 'Inculcar el amor por la naturaleza a temprana edad es la clave para un mejor futuro. Por eso organizamos caminatas y eventos para niños y sus familias.',
       en: "Teaching kids to love nature early is the key to a better future. That's why we organize hikes and events for children and their families.",
     },
-    // No photos yet: add some to src/assets/images/galleries/little-hikers.
-    heroImage: null,
-    cardImage: null,
+    heroImage: image('galleries/little-hikers/26-5837'),
+    cardImage: image('galleries/little-hikers/21-5848'),
     sections: [
       {
         type: 'gallery',
@@ -222,7 +227,24 @@ export const activities = [
           es: 'Porque los niños son lo más importante',
           en: 'Because kids are what matter most',
         },
+        // Group photos with the Pequeños Senderistas flag.
         photos: gallery('little-hikers', { es: 'Pequeños Senderistas', en: 'Little Hikers' }),
+      },
+      {
+        type: 'locations',
+        heading: { es: 'Nuestras salidas', en: 'Our outings' },
+        intro: { es: 'Elige una salida para ver sus fotos.', en: 'Pick an outing to see its photos.' },
+        // Each outing's photos go in src/assets/images/galleries/little-hikers-<outing>.
+        places: [
+          outing({ es: 'Acuario de Seattle', en: 'Seattle Aquarium' }, 'aquarium'),
+          outing({ es: 'Reforestación', en: 'Tree planting' }, 'tree-planting'),
+          outing({ es: 'Senderos', en: 'Trails' }, 'trails'),
+          outing({ es: 'Esclusas de Ballard', en: 'Ballard Locks' }, 'ballard-locks'),
+          outing({ es: 'Paseo por Seattle', en: 'Around Seattle' }, 'seattle'),
+          outing({ es: 'Playa y lago', en: 'Beach and lake' }, 'beach-lake'),
+          outing({ es: 'Fiestas y convivios', en: 'Parties and get-togethers' }, 'celebrations'),
+          outing({ es: 'En la nieve', en: 'In the snow' }, 'snow'),
+        ],
       },
       {
         type: 'videos',
