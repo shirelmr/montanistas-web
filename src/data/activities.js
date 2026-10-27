@@ -37,16 +37,10 @@ export const activities = [
         heading: { es: 'Cumbre del Monte Rainier', en: 'Mount Rainier summit' },
         text: {
           es: [
-            'Alicia Tapia, Fabian Matia Mora, Eliseo Cruz, Lourdes Orozco, Pablo Gaviria, Marvin Velasquez, Marcos Bueno',
-            'y Hector Tito Hernandez felicidades por tu gran esfuerzo y tu apoyo incondicional',
-            'al grupo',
-            'Montañistas De Washington',
+            'El 5 de julio de 2026 llegamos a la cumbre del Monte Rainier, a 14,411 pies, el punto más alto de Washington.',
           ],
           en: [
-            'Alicia Tapia, Fabian Matia Mora, Eliseo Cruz, Lourdes Orozco, Pablo Gaviria, Marvin Velasquez, Marcos Bueno',
-            'and Hector Tito Hernandez, congratulations on your hard work and your unconditional support',
-            'for the group',
-            'Montañistas De Washington',
+            'On July 5, 2026, we reached the summit of Mount Rainier, 14,411 feet up, the highest point in Washington.',
           ],
         },
         video: videos.summitCrew,
@@ -168,8 +162,8 @@ export const activities = [
         type: 'locations',
         heading: { es: 'Escalada con cuerda en Edgeworks', en: 'Rope climbing at Edgeworks' },
         intro: {
-          es: 'Nos reunimos a escalar en español en los tres gimnasios de Edgeworks. Gracias por darle este espacio de recreación a nuestra comunidad latina hispanohablante.',
-          en: 'We meet to climb, in Spanish, at the three Edgeworks gyms. Thank you for giving our Spanish-speaking Latino community this space for recreation.',
+          es: 'Nos reunimos a escalar en los tres gimnasios de Edgeworks. Gracias a Edgeworks por abrirle este espacio a nuestra comunidad latina.',
+          en: "We meet to climb at Edgeworks' three gyms. Thanks to Edgeworks for opening this space to our Latino community.",
         },
         // Shown above the tabs: not tied to one gym.
         videos: [
@@ -198,8 +192,8 @@ export const activities = [
         type: 'gallery',
         title: { es: 'Cursos de belay', en: 'Belay courses' },
         intro: {
-          es: 'Aprendemos a asegurar (belay) a nuestros compañeros con técnica y seguridad, para que cada escalada sea en equipo.',
-          en: 'We learn to belay our partners with proper technique and safety, so every climb is a team effort.',
+          es: 'La seguridad es esencial. Por eso nos capacitamos como belayers, para cuidar a cada compañero que escala.',
+          en: 'Safety is essential. That is why we train as belayers, to look after every partner who climbs.',
         },
         photos: gallery('belay-courses', { es: 'Curso de belay', en: 'Belay course' }),
       },
