@@ -1,7 +1,6 @@
 import { Outlet, ScrollRestoration, useLocation } from 'react-router'
 import Header from './Header'
 import Footer from './Footer'
-import CookieBanner from './CookieBanner'
 import useScrollReveal from '../../hooks/useScrollReveal'
 
 // Frame shared by every page. The page itself renders inside <Outlet />.
@@ -17,7 +16,6 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <CookieBanner />
       <ScrollRestoration />
     </>
   )

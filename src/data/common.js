@@ -146,12 +146,3 @@ export const footer = {
   activitiesTitle: { es: 'Actividades', en: 'Activities' },
   contactTitle: { es: 'Contacto', en: 'Contact' },
 }
-
-export const cookies = {
-  title: { es: 'Este sitio web utiliza cookies.', en: 'This website uses cookies.' },
-  text: {
-    es: 'Usamos cookies para analizar el tráfico del sitio y optimizar tu experiencia. Al aceptar el uso de cookies, tus datos se agruparán con los de todos los demás usuarios.',
-    en: 'We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.',
-  },
-  accept: { es: 'Aceptar', en: 'Accept' },
-}

@@ -48,7 +48,7 @@ src/
     intro/                  extra group photos
     galleries/<name>/       one folder per photo gallery, + thumbs/ previews
   components/
-    layout/                 on every page: Header (menu), Footer, CookieBanner…
+    layout/                 on every page: Header (menu), Footer…
     sections/               building blocks of the pages (Hero, galleries, videos…)
     ui/                     small reusable pieces (Photo, VideoEmbed, Logo…)
   data/
