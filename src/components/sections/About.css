@@ -1,6 +1,12 @@
 .about {
   position: relative;
-  padding: 120px 0 80px;
+}
+
+/* Tall on purpose: the menu only shows once the photo above has scrolled
+   away, so the extra room on top lets it appear before the text arrives.
+   (Doubled class so it wins over the shared `.section` padding.) */
+.about.section {
+  padding: 260px 0 168px;
 }
 
 /* Thin line dropping from the point of the photo above into this section. */
@@ -10,7 +16,7 @@
   top: 0;
   left: 50%;
   width: 2px;
-  height: 72px;
+  height: 184px;
   border-radius: 2px;
   background: linear-gradient(var(--orange), rgb(210 96 26 / 0));
   transform: translateX(-50%);
@@ -77,12 +83,12 @@
 }
 
 @media (max-width: 760px) {
-  .about {
-    padding: 80px 0 56px;
+  .about.section {
+    padding: 160px 0 104px;
   }
 
   .about::before {
-    height: 48px;
+    height: 112px;
   }
 
   .about__grid {
