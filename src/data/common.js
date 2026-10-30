@@ -103,9 +103,9 @@ export const contact = {
   visitLines: { es: ['Amamos a nuestra comunidad'], en: ['We love our community'] },
   orgName: 'Montañistas de Washington',
   emails: [
+    'info@montanistasdewashington.org',
     'marcosbueno@montanistasdewashington.org',
     'aliciatapia@montanistasdewashington.org',
-    'hectortito@montanistasdewashington.org',
   ],
   hoursTitle: { es: 'Horario', en: 'Hours' },
   closed: { es: 'Cerrado', en: 'Closed' },
