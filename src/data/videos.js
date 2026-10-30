@@ -47,15 +47,4 @@ export const videos = {
     'PXxQn5V6LE0',
   ),
   solCastroPodcast: video('Podcast con Sol Castro Alpinista Profesional 🇲🇽', '4OVYlZre3SA'),
-  firstAnniversaryInterview: video(
-    'Los Montañistas de Washington están apunto de alcanzar su primer aniversario',
-  ),
-  vtrCelebrating: video('Montañistas de Washington quienes estan aun celebrando'),
-  vtrFirstInterview: video('Montañistas en Washington nos visita esta tarde'),
-  cascadePbs: video('Explore The Outdoors Family Fair | Cascade PBS Montañistas De Washington'),
-  stretchYourDollar: video('Los Montañistas de Washington, nos comentan en'),
-  vtrCabin: video('Los Montañistas de Washington en cabina hoy'),
-  plans2025: video(
-    'Los Montañistas de Washington, en entrevista con nosotros, sus alcances en el 2024 y planes en 2025.',
-  ),
 }
