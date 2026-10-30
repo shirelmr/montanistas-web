@@ -52,33 +52,33 @@ export const recent = {
   heading: { es: 'Lo más reciente', en: 'Latest' },
   items: [
     {
-      date: { es: 'Enero 2025', en: 'January 2025' },
-      title: { es: 'Limpieza de la playa en Seward Park', en: 'Seward Park beach cleanup' },
+      date: { es: '21 de octubre de 2026', en: 'October 21, 2026' },
+      title: { es: 'Seguridad en la montaña', en: 'Mountain safety' },
       text: {
-        es: 'Con los Pequeños Senderistas: predicar con el ejemplo es la mejor manera de educar.',
-        en: 'With the Little Hikers: leading by example is the best way to teach.',
+        es: 'VT Radio Universal presenta a Montañistas de Washington hablando de seguridad en la montaña.',
+        en: 'VT Radio Universal features Montañistas de Washington talking about mountain safety.',
       },
-      video: videos.sewardPark,
-      link: '/comunidad',
-    },
-    {
-      date: '2025',
-      title: { es: 'Nuestros logros de 2024 y planes para 2025', en: 'Our 2024 achievements and 2025 plans' },
-      text: {
-        es: 'Entrevista en VT Radio sobre lo que logramos y lo que viene.',
-        en: "An interview on VT Radio about what we achieved and what's next.",
-      },
-      video: videos.plans2025,
+      video: videos.mountainSafetyRadio,
       link: '/en-los-medios',
     },
     {
-      date: { es: 'Noviembre 2024', en: 'November 2024' },
-      title: { es: 'Raquetas de nieve en Artist Point', en: 'Snowshoeing at Artist Point' },
+      date: { es: '17 de octubre de 2026', en: 'October 17, 2026' },
+      title: 'Wallace Falls',
       text: {
-        es: 'Practicando con los nuevos miembros en el Monte Baker.',
-        en: 'Practicing with new members on Mount Baker.',
+        es: 'Caminata a las cascadas de Wallace Falls.',
+        en: 'A hike to the Wallace Falls waterfalls.',
       },
-      video: videos.artistPoint,
+      video: videos.wallaceFalls,
+      link: '/alta-montana',
+    },
+    {
+      date: { es: '11 de octubre de 2026', en: 'October 11, 2026' },
+      title: 'Lake Ingalls',
+      text: {
+        es: 'Alerces dorados y la primera nieve de la temporada.',
+        en: 'Golden larches and the first snow of the season.',
+      },
+      video: videos.lakeIngalls,
       link: '/alta-montana',
     },
   ],

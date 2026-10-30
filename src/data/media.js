@@ -37,6 +37,24 @@ export const interviews = {
   rows: [
     [
       {
+        title: { es: 'Seguridad en la montaña', en: 'Mountain safety' },
+        text: {
+          es: 'VT Radio Universal presenta a Montañistas de Washington hablando de seguridad en la montaña',
+          en: 'VT Radio Universal features Montañistas de Washington talking about mountain safety',
+        },
+        video: videos.mountainSafetyRadio,
+      },
+      {
+        title: { es: 'Entrevista con Sol Castro', en: 'Interview with Sol Castro' },
+        text: {
+          es: 'Podcast con Sol Castro, alpinista profesional de México',
+          en: 'A podcast with Sol Castro, a professional mountaineer from Mexico',
+        },
+        video: videos.solCastroPodcast,
+      },
+    ],
+    [
+      {
         title: {
           es: 'Nuestros logros de 2024 y planes para 2025',
           en: 'Our 2024 achievements and 2025 plans',

@@ -12,7 +12,6 @@ export const videos = {
   // Mountaineering and hiking
   foxSummit: video('MONTAÑISTAS DE WASHINGTON SUMMITTING THE HIGHEST PEAK- #fox13', '63m9PjP6OiE'),
   summitCrew: video('Mount Rainier Summit- July 5th-2026 | Montañistas De Washington', 'tr1iGc9_i5c'),
-  artistPoint: video('Artist Point - Mt Baker Nov-30-2024'),
 
   // 2026 hikes
   wallaceFalls: video('Wallace Falls _ October 17-2026', 's0Z0ObgXhCY'),
@@ -41,9 +40,13 @@ export const videos = {
   // Community
   hilltopPark: video('Reforestaciòn in Hilltop Park -August-15-2026', 'Hk4Gunps0MA'),
   communityAnniversary: video('3er aniversario-Reforestacion y Servicio Comunitario', 'jR1_kjOCyUo'),
-  sewardPark: video('SewardPark - Servicio Comunitario 1-5-2025'),
 
   // Interviews
+  mountainSafetyRadio: video(
+    'Seguridad en la montaña, VT Radio Universal Presenta a Los montañistas de Washington.',
+    'PXxQn5V6LE0',
+  ),
+  solCastroPodcast: video('Podcast con Sol Castro Alpinista Profesional 🇲🇽', '4OVYlZre3SA'),
   firstAnniversaryInterview: video(
     'Los Montañistas de Washington están apunto de alcanzar su primer aniversario',
   ),
