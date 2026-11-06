@@ -38,6 +38,8 @@ export const videos = {
   ),
 
   // Community
+  breastCancerWalk: video('Caminata de concientizaciòn sobre el cancer de mama October 31-2026', 'uahcK9eb39o'),
+  communityBikeRide: video('Comunidad en Bicicleta -@centroculturalmexicano -October-24-2026', '4eK49Bu5zAk'),
   hilltopPark: video('Reforestaciòn in Hilltop Park -August-15-2026', 'Hk4Gunps0MA'),
   communityAnniversary: video('3er aniversario-Reforestacion y Servicio Comunitario', 'jR1_kjOCyUo'),
 

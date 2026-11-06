@@ -52,6 +52,26 @@ export const recent = {
   heading: { es: 'Lo más reciente', en: 'Latest' },
   items: [
     {
+      date: { es: '31 de octubre de 2026', en: 'October 31, 2026' },
+      title: { es: 'Caminata de concientización sobre el cáncer de mama', en: 'Breast cancer awareness walk' },
+      text: {
+        es: 'Caminamos juntos para crear conciencia sobre el cáncer de mama.',
+        en: 'We walked together to raise awareness of breast cancer.',
+      },
+      video: videos.breastCancerWalk,
+      link: '/comunidad',
+    },
+    {
+      date: { es: '24 de octubre de 2026', en: 'October 24, 2026' },
+      title: { es: 'Comunidad en bicicleta', en: 'Community bike ride' },
+      text: {
+        es: 'Un paseo en bicicleta con el Centro Cultural Mexicano.',
+        en: 'A bike ride with the Centro Cultural Mexicano.',
+      },
+      video: videos.communityBikeRide,
+      link: '/comunidad',
+    },
+    {
       date: { es: '21 de octubre de 2026', en: 'October 21, 2026' },
       title: { es: 'Seguridad en la montaña', en: 'Mountain safety' },
       text: {
@@ -69,16 +89,6 @@ export const recent = {
         en: 'A hike to the Wallace Falls waterfalls.',
       },
       video: videos.wallaceFalls,
-      link: '/alta-montana',
-    },
-    {
-      date: { es: '11 de octubre de 2026', en: 'October 11, 2026' },
-      title: 'Lake Ingalls',
-      text: {
-        es: 'Alerces dorados y la primera nieve de la temporada.',
-        en: 'Golden larches and the first snow of the season.',
-      },
-      video: videos.lakeIngalls,
       link: '/alta-montana',
     },
   ],

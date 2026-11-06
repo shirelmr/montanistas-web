@@ -318,6 +318,22 @@ export const activities = [
         heading: { es: 'Trabajando para la comunidad', en: 'Working for the community' },
         items: [
           {
+            title: { es: 'Caminata de concientización sobre el cáncer de mama', en: 'Breast cancer awareness walk' },
+            text: {
+              es: ['Caminamos juntos para crear conciencia sobre el cáncer de mama', '31 de octubre de 2026'],
+              en: ['We walked together to raise awareness of breast cancer', 'October 31, 2026'],
+            },
+            video: videos.breastCancerWalk,
+          },
+          {
+            title: { es: 'Comunidad en bicicleta', en: 'Community bike ride' },
+            text: {
+              es: ['Un paseo en bicicleta con el Centro Cultural Mexicano', '24 de octubre de 2026'],
+              en: ['A bike ride with the Centro Cultural Mexicano', 'October 24, 2026'],
+            },
+            video: videos.communityBikeRide,
+          },
+          {
             title: { es: 'Reforestación en Hilltop Park', en: 'Reforestation at Hilltop Park' },
             text: {
               es: ['Plantando árboles para la comunidad', '15 de agosto de 2026'],

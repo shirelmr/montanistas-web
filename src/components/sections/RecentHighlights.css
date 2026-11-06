@@ -1,10 +1,18 @@
+/* Up to four cards in a row on wide screens, two by two on tablets, so
+   none is left alone on a row. */
 .recent__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media (min-width: 561px) and (max-width: 900px) {
+  .recent__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .recent-card {
