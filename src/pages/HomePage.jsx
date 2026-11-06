@@ -4,6 +4,7 @@ import ActivityCards from '../components/sections/ActivityCards'
 import FeaturedVideo from '../components/sections/FeaturedVideo'
 import RecentHighlights from '../components/sections/RecentHighlights'
 import StripGallery from '../components/sections/StripGallery'
+import Sponsors from '../components/sections/Sponsors'
 import SocialBand from '../components/sections/SocialBand'
 import Subscribe from '../components/sections/Subscribe'
 import usePageTitle from '../hooks/usePageTitle'
@@ -11,7 +12,7 @@ import { featured, moments } from '../data/home'
 import './HomePage.css'
 
 // Who we are first, then what we do, then the featured video and the
-// latest news.
+// latest news, and last the brands that support us.
 export default function HomePage() {
   usePageTitle(null)
 
@@ -23,6 +24,7 @@ export default function HomePage() {
       <FeaturedVideo {...featured} tone="grey" />
       <RecentHighlights tone="dark" />
       <StripGallery {...moments} tone="grey" />
+      <Sponsors tone="dark" />
       <SocialBand />
       <Subscribe />
     </div>

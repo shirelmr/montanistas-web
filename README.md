@@ -15,7 +15,7 @@ npm run preview   # serve the production build
 
 | Path                     | Page                                              |
 | ------------------------ | ------------------------------------------------- |
-| `/`                      | Home: featured video, activities, latest videos   |
+| `/`                      | Home: featured video, activities, news, sponsors  |
 | `/alta-montana`          | Senderismo y Alta Montaña                         |
 | `/escalada`              | Escalada (ice climbing, Edgeworks, belay courses) |
 | `/pequenos-senderistas`  | Pequeños Senderistas                              |
@@ -44,6 +44,7 @@ scripts/
 src/
   assets/images/
     brand/                  logo
+    sponsors/               sponsor logos, white on transparent
     hero/                   background of the home banner
     intro/                  extra group photos
     galleries/<name>/       one folder per photo gallery, + thumbs/ previews
@@ -74,6 +75,9 @@ touch the components to update the site.
 - **Add an activity:** add an entry to `activities.js`. It gets its own page, a
   menu link and a card on the home page automatically.
 - **Change what's new on the home page:** edit `recent` in `home.js`.
+- **Add a sponsor:** put its logo in `src/assets/images/sponsors/` as a white logo on a
+  transparent background (`.webp`), then add it to `sponsors` in `home.js` with its name and
+  website.
 
 ### Languages
 

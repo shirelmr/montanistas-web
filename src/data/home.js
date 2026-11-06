@@ -91,3 +91,18 @@ export const moments = {
   },
   photos: gallery('outdoors', { es: 'Momento en la naturaleza', en: 'Moment in nature' }),
 }
+
+// Brands that support the group. Logos are white on a transparent background,
+// in src/assets/images/sponsors/.
+export const sponsors = {
+  heading: { es: 'Nuestros patrocinadores', en: 'Our sponsors' },
+  intro: {
+    es: 'Gracias a las marcas que apoyan a nuestra comunidad y nos ayudan a seguir explorando.',
+    en: 'Thank you to the brands that support our community and help us keep exploring.',
+  },
+  items: [
+    { name: 'Black Diamond', logo: image('sponsors/black-diamond'), url: 'https://www.blackdiamondequipment.com' },
+    { name: 'Deuter', logo: image('sponsors/deuter'), url: 'https://www.deuter.com' },
+    { name: 'Edgeworks', logo: image('sponsors/edgeworks'), url: 'https://www.edgeworksclimbing.com' },
+  ],
+}

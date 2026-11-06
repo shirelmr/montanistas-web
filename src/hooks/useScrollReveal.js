@@ -12,6 +12,7 @@ const SELECTOR = [
   'main .featured .video',
   'main .recent-card',
   'main .strip__viewport',
+  'main .sponsor',
   'main .media__row',
   'main .interviews__row',
   'main .fox__subtitle',
@@ -25,7 +26,7 @@ const SELECTOR = [
 ].join(', ')
 
 // Cards arrive one after another instead of all at once.
-const STAGGERED = '.activity-card, .recent-card'
+const STAGGERED = '.activity-card, .recent-card, .sponsor'
 const STAGGER_MS = 90
 
 // Runs on every page change. It's a layout effect so the blocks are already
