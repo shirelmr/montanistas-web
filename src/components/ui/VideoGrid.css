@@ -12,6 +12,13 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* An odd one out at the end sits centered under the others. */
+.video-grid--several > .video-grid__item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 12px);
+}
+
 .video-grid__item {
   margin: 0;
 }
@@ -26,5 +33,9 @@
 @media (max-width: 640px) {
   .video-grid--several {
     grid-template-columns: 1fr;
+  }
+
+  .video-grid--several > .video-grid__item:last-child:nth-child(odd) {
+    width: 100%;
   }
 }

@@ -25,6 +25,7 @@ export const videos = {
   // Climbing
   iceClimbing2026: video('Ice Climbing -February 7-2026', 'tijQ_b9h3V0'),
   ourayIcePark: video('Ouray Ice Park- Ice Climbing', 'dj-DhHRcIGk'),
+  ourayIcePark2025: video('Ouray Ice Park- Ice Climbing -February -23-2025', 'Xx1-LYQLdcI'),
   climbingNight: video('Noche De Escalada-Indoor Rock Climbing', 'rW0jV8HxCeY'),
 
   // Little Hikers
@@ -42,6 +43,9 @@ export const videos = {
   communityBikeRide: video('Comunidad en Bicicleta -@centroculturalmexicano -October-24-2026', '4eK49Bu5zAk'),
   hilltopPark: video('Reforestaciòn in Hilltop Park -August-15-2026', 'Hk4Gunps0MA'),
   communityAnniversary: video('3er aniversario-Reforestacion y Servicio Comunitario', 'jR1_kjOCyUo'),
+  seattleMarathon2025: video('2025 UW Medicine Seattle Marathon and Half Nov-30-2025', 'UxiWbK7lJjU'),
+  pooPooPointTrailWork: video('Poo Poo Point- Labor Comunitario', '3UXJdcpwc14'),
+  pooPooPointBombCyclone: video('Poo Poo Point- Labor Comunitario —Bomb Ciclone December-1-2024', 'd7PlnPUvTBw'),
 
   // Interviews
   mountainSafetyRadio: video(
@@ -49,4 +53,9 @@ export const videos = {
     'PXxQn5V6LE0',
   ),
   solCastroPodcast: video('Podcast con Sol Castro Alpinista Profesional 🇲🇽', '4OVYlZre3SA'),
+  ccmRadio: video(
+    'Centro Cultural Mexicano Radio Ep. 11 | Rompiendo Barreras con Montañistas de Washington',
+    'MqO_cUFz0g0',
+  ),
+  sharedPeaks: video('Shared Peaks: The Climb, the Coffee, the Community', 'Uh4Zd3WCs44'),
 }

@@ -1,4 +1,4 @@
-// "En los medios" page: TV and radio stories about the group.
+// "En los medios" page: TV, radio and video stories about the group.
 
 import { image } from './images'
 import { videos } from './videos'
@@ -8,8 +8,8 @@ export const mediaPage = {
   nav: { es: 'Medios', en: 'Media' },
   title: { es: 'En los medios', en: 'In the media' },
   intro: {
-    es: 'Reportajes y entrevistas sobre Montañistas de Washington en la televisión y la radio.',
-    en: 'News stories and interviews about Montañistas de Washington on TV and radio.',
+    es: 'Reportajes, entrevistas y videos sobre Montañistas de Washington.',
+    en: 'News stories, interviews and videos about Montañistas de Washington.',
   },
   heroImage: image('galleries/trips/17-crater-rim-team'),
 }
@@ -35,6 +35,24 @@ export const interviews = {
           en: 'VT Radio Universal features Montañistas de Washington talking about mountain safety',
         },
         video: videos.mountainSafetyRadio,
+      },
+      {
+        title: { es: 'Rompiendo barreras', en: 'Breaking barriers' },
+        text: {
+          es: 'Centro Cultural Mexicano Radio conversa con Marcos Bueno y Alicia Tapia sobre cómo acercar las actividades al aire libre a la comunidad hispanohablante',
+          en: 'Centro Cultural Mexicano Radio talks with Marcos Bueno and Alicia Tapia about bringing the outdoors to the Spanish-speaking community',
+        },
+        video: videos.ccmRadio,
+      },
+    ],
+    [
+      {
+        title: 'Shared Peaks',
+        text: {
+          es: 'Un video de Kinetic Village sobre la montaña, el café y la comunidad de Montañistas de Washington',
+          en: 'A video by Kinetic Village about the climb, the coffee and the community of Montañistas de Washington',
+        },
+        video: videos.sharedPeaks,
       },
       {
         title: { es: 'Entrevista con Sol Castro', en: 'Interview with Sol Castro' },

@@ -158,6 +158,10 @@ export const activities = [
             caption: { es: 'Escalada en hielo · 7 de febrero de 2026', en: 'Ice climbing · February 7, 2026' },
           },
           {
+            video: videos.ourayIcePark2025,
+            caption: { es: 'Ouray Ice Park · 23 de febrero de 2025', en: 'Ouray Ice Park · February 23, 2025' },
+          },
+          {
             video: videos.ourayIcePark,
             caption: 'Ouray Ice Park, Colorado',
           },
@@ -339,6 +343,30 @@ export const activities = [
               en: ['Planting trees for the community', 'August 15, 2026'],
             },
             video: videos.hilltopPark,
+          },
+          {
+            title: { es: 'Maratón de Seattle', en: 'Seattle Marathon' },
+            text: {
+              es: ['2025 UW Medicine Seattle Marathon y medio maratón', '30 de noviembre de 2025'],
+              en: ['2025 UW Medicine Seattle Marathon and Half Marathon', 'November 30, 2025'],
+            },
+            video: videos.seattleMarathon2025,
+          },
+          {
+            title: { es: 'Labor comunitario en Poo Poo Point', en: 'Community work at Poo Poo Point' },
+            text: {
+              es: ['Trabajo comunitario en el sendero de Poo Poo Point', 'Diciembre de 2024'],
+              en: ['Community work on the Poo Poo Point trail', 'December 2024'],
+            },
+            video: videos.pooPooPointTrailWork,
+          },
+          {
+            title: { es: 'Poo Poo Point después del ciclón bomba', en: 'Poo Poo Point after the bomb cyclone' },
+            text: {
+              es: ['Limpiando y cortando los árboles derribados por el ciclón bomba en el PNW', '1 de diciembre de 2024'],
+              en: ['Clearing and cutting the trees brought down by the bomb cyclone in the PNW', 'December 1, 2024'],
+            },
+            video: videos.pooPooPointBombCyclone,
           },
           {
             title: { es: 'Reforestación y servicio comunitario', en: 'Reforestation and community service' },
