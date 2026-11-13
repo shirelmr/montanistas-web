@@ -16,7 +16,9 @@ npm run preview   # serve the production build
 | Path                     | Page                                              |
 | ------------------------ | ------------------------------------------------- |
 | `/`                      | Home: featured video, activities, news, sponsors  |
-| `/alta-montana`          | Senderismo y Alta Montaña                         |
+| `/alta-montana`          | Alta Montaña: our summits on a chart and timeline |
+| `/alta-montana/<peak>`   | One page per summit (`rainier`, `shasta`…)        |
+| `/senderismo`            | Senderismo (day hikes, easy to intermediate)      |
 | `/escalada`              | Escalada (ice climbing, Edgeworks, belay courses) |
 | `/pequenos-senderistas`  | Pequeños Senderistas                              |
 | `/comunidad`             | Comunidad (cleanups, tree planting, trail days)   |
@@ -75,6 +77,10 @@ touch the components to update the site.
 - **Add an activity:** add an entry to `activities.js`. It gets its own page, a
   menu link and a card on the home page automatically.
 - **Change what's new on the home page:** edit `recent` in `home.js`.
+- **Add a summit:** add an entry to `peaks.js` (name, height, photos), newest first: the
+  timeline follows that order. It appears on the Montaña chart and timeline and gets its own
+  page at `/alta-montana/<slug>`, which lays its photos out in several ways (a magazine
+  spread, a photo with a card, a mosaic). Until it has photos, it's drawn as a snowy mountain.
 - **Add a sponsor:** put its logo in `src/assets/images/sponsors/` as a white logo on a
   transparent background (`.webp`), then add it to `sponsors` in `home.js` with its name and
   website.
@@ -95,7 +101,8 @@ file name:
 | Folder               | Gallery                                    |
 | -------------------- | ------------------------------------------ |
 | `outdoors`           | Nuestros momentos favoritos (home)         |
-| `trips`              | Un viaje por lo salvaje (Montaña)          |
+| `trips`              | Banners and cards (Montaña, Senderismo…)   |
+| `peak-<slug>`        | That summit's page, e.g. `peak-rainier`    |
 | `ice-climbing`       | Escalada en hielo en Ouray (Escalada)      |
 | `edgeworks-seattle`  | Edgeworks, Seattle tab (Escalada)          |
 | `edgeworks-tacoma`   | Edgeworks, Tacoma tab (Escalada)           |

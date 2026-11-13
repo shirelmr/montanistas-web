@@ -8,6 +8,8 @@
 // - locations: tabs to switch between places, each with its own photos and
 //              optional videos; section-wide videos go above the tabs
 // - videos:    a list of videos with a description beside each
+// - peakChart, peakTimeline: the summits from peaks.js, on an elevation
+//              chart and on a timeline
 // Leave `heroImage` / `cardImage` as null to show a placeholder until there
 // are photos.
 
@@ -26,42 +28,39 @@ export const activities = [
   {
     slug: 'alta-montana',
     nav: { es: 'Montaña', en: 'Mountains' },
-    title: { es: 'Senderismo y Alta Montaña', en: 'Hiking & Mountaineering' },
+    title: { es: 'Alta Montaña', en: 'Mountaineering' },
     summary: {
-      es: 'Caminatas, campamentos en la nieve y cumbres como el Monte Rainier.',
-      en: 'Hikes, snow camping and summits like Mount Rainier.',
+      es: 'Campamentos en la nieve y cumbres como el Monte Rainier.',
+      en: 'Snow camping and summits like Mount Rainier.',
     },
     intro: {
-      es: 'Desde caminatas de un día hasta cumbres de más de 14,000 pies: exploramos los senderos y montañas de Washington y de todo el país, siempre en grupo.',
-      en: 'From day hikes to summits over 14,000 feet, we explore the trails and mountains of Washington and beyond, always as a group.',
+      es: 'Cumbres de más de 14,000 pies, glaciares y campamentos en la nieve: subimos las montañas de Washington y de todo el país, siempre en grupo.',
+      en: 'Summits over 14,000 feet, glaciers and snow camping: we climb the mountains of Washington and beyond, always as a group.',
     },
-    heroImage: image('galleries/outdoors/01-alpenglow-climb'),
+    heroImage: image('galleries/trips/10-rope-team'),
     cardImage: image('galleries/trips/16-summit-team'),
+    // The peaks themselves are listed in peaks.js.
+    sections: [{ type: 'peakChart' }, { type: 'peakTimeline' }],
+  },
+
+  {
+    slug: 'senderismo',
+    nav: { es: 'Senderismo', en: 'Hiking' },
+    title: { es: 'Senderismo', en: 'Hiking' },
+    summary: {
+      es: 'Caminatas a lagos, cascadas y miradores, para todos los niveles.',
+      en: 'Hikes to lakes, waterfalls and lookouts, for every level.',
+    },
+    intro: {
+      es: 'Desde caminatas sencillas hasta rutas de todo el día como The Enchantments: recorremos los senderos de Washington en grupo y a nuestro ritmo.',
+      en: 'From easy walks to all-day routes like The Enchantments, we explore the trails of Washington as a group, at our own pace.',
+    },
+    heroImage: image('galleries/trips/01-trailhead-group'),
+    cardImage: image('galleries/outdoors/04-alpine-lake'),
     sections: [
       {
-        type: 'featured',
-        heading: { es: 'Cumbre del Monte Rainier', en: 'Mount Rainier summit' },
-        text: {
-          es: [
-            'El 5 de julio de 2026 llegamos a la cumbre del Monte Rainier, a 14,411 pies, el punto más alto de Washington.',
-          ],
-          en: [
-            'On July 5, 2026, we reached the summit of Mount Rainier, 14,411 feet up, the highest point in Washington.',
-          ],
-        },
-        video: videos.summitCrew,
-      },
-      {
-        type: 'gallery',
-        title: {
-          es: 'Un viaje por lo salvaje: una guía visual de nuestras excursiones',
-          en: 'Journey Through the Wild: A Visual Guide to Our Outdoor Trips',
-        },
-        photos: gallery('trips', { es: 'Excursión de alta montaña', en: 'Mountaineering trip' }),
-      },
-      {
         type: 'videos',
-        heading: VIDEOS_HEADING,
+        heading: { es: 'Nuestras caminatas', en: 'Our hikes' },
         items: [
           // 2026 hikes, newest first.
           {

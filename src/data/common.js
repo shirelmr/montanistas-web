@@ -20,6 +20,8 @@ export const ui = {
   seeMore: { es: 'Ver más', en: 'See more' },
   previous: { es: 'Anterior', en: 'Previous' },
   next: { es: 'Siguiente', en: 'Next' },
+  close: { es: 'Cerrar', en: 'Close' },
+  morePhotos: { es: 'Ver más fotos', en: 'See more photos' },
   play: { es: 'Reproducir', en: 'Play' },
   videoPending: { es: 'Video pendiente', en: 'Video coming soon' },
   sending: { es: 'Enviando…', en: 'Sending…' },

@@ -3,6 +3,8 @@ import FeaturedVideo from '../components/sections/FeaturedVideo'
 import StripGallery from '../components/sections/StripGallery'
 import LocationGallery from '../components/sections/LocationGallery'
 import MediaRows from '../components/sections/MediaRows'
+import PeakChart from '../components/sections/PeakChart'
+import PeakTimeline from '../components/sections/PeakTimeline'
 import JoinBand from '../components/sections/JoinBand'
 import usePageTitle from '../hooks/usePageTitle'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -13,6 +15,8 @@ const SECTIONS = {
   gallery: StripGallery,
   locations: LocationGallery,
   videos: MediaRows,
+  peakChart: PeakChart,
+  peakTimeline: PeakTimeline,
 }
 
 // One page per activity, built from its entry in data/activities.js:

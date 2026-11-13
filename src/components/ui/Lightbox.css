@@ -1,0 +1,95 @@
+.lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgb(5 7 10 / 0.94);
+  color: #fff;
+}
+
+.lightbox::backdrop {
+  background: transparent;
+}
+
+/* The page behind stays put while a photo is open. */
+body:has(.lightbox[open]) {
+  overflow: hidden;
+}
+
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.lightbox__photo {
+  max-width: min(92vw, 1600px);
+  max-height: 84dvh;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.5);
+}
+
+.lightbox__count {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  margin: 0;
+  translate: -50% 0;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.lightbox__btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.35);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.lightbox__btn:hover,
+.lightbox__btn:focus-visible {
+  border-color: var(--orange);
+  background: var(--orange);
+}
+
+.lightbox__close {
+  top: 16px;
+  right: 16px;
+}
+
+.lightbox__prev,
+.lightbox__next {
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.lightbox__prev {
+  left: 16px;
+}
+
+.lightbox__next {
+  right: 16px;
+}
+
+/* Phones: arrows at the bottom, out of the photo's way. */
+@media (max-width: 640px) {
+  .lightbox__prev,
+  .lightbox__next {
+    top: auto;
+    bottom: 8px;
+    translate: none;
+  }
+}

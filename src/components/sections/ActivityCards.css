@@ -1,23 +1,29 @@
-/* Four across, two by two, or one per row, so no card is left alone on a
-   row. */
+/* Three per row on wide screens, two on tablets, one on phones. A shorter
+   last row is centered, so it works with any number of activities. */
 .activities__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  --per-row: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.activities__grid > li {
+  flex: 0 0 calc((100% - (var(--per-row) - 1) * 24px) / var(--per-row));
+}
+
 @media (max-width: 999px) {
   .activities__grid {
-    grid-template-columns: repeat(2, 1fr);
+    --per-row: 2;
   }
 }
 
 @media (max-width: 559px) {
   .activities__grid {
-    grid-template-columns: 1fr;
+    --per-row: 1;
   }
 }
 

@@ -1,0 +1,89 @@
+/* Six columns. The tile sizes repeat every 14 photos, in bands that fill
+   the width exactly: a big one beside a tall one, three squares, two wide
+   ones, then the same with the big and tall swapped. */
+.mosaic__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: clamp(80px, 10vw, 140px);
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mosaic__tile {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.mosaic__tile:nth-child(14n + 1),
+.mosaic__tile:nth-child(14n + 9) {
+  grid-column: span 4;
+  grid-row: span 3;
+}
+
+.mosaic__tile:nth-child(14n + 2),
+.mosaic__tile:nth-child(14n + 8) {
+  grid-row: span 3;
+}
+
+.mosaic__tile:nth-child(14n + 6),
+.mosaic__tile:nth-child(14n + 7),
+.mosaic__tile:nth-child(14n + 13),
+.mosaic__tile:nth-child(14n + 14) {
+  grid-column: span 3;
+}
+
+.mosaic__more {
+  display: block;
+  margin: 32px auto 0;
+}
+
+.mosaic__btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 6px;
+  background: #222;
+  cursor: zoom-in;
+}
+
+.mosaic__btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.6s ease, filter 0.3s ease;
+}
+
+.mosaic__btn:hover img,
+.mosaic__btn:focus-visible img {
+  scale: 1.05;
+  filter: brightness(1.08);
+}
+
+.mosaic__btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* Phones: two columns, a big photo and then four small ones. */
+@media (max-width: 700px) {
+  .mosaic__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 42vw;
+    gap: 8px;
+  }
+
+  .mosaic__tile:nth-child(n) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .mosaic__tile:nth-child(5n + 1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}

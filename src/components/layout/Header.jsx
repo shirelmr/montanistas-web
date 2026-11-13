@@ -47,7 +47,10 @@ export default function Header() {
   const menuOpen = layout === 'compact' && menuOpenedOn === pathname
   const closeMenu = () => setMenuOpenedOn(null)
 
-  const current = navItems.find((item) => item.to === pathname)
+  // Pages inside a section, like a summit inside Montaña, count as that
+  // section.
+  const isCurrent = (to) => pathname === to || (to !== '/' && pathname.startsWith(`${to}/`))
+  const current = navItems.find((item) => isCurrent(item.to))
 
   // Re-check the layout whenever the screen, the language or the fonts
   // change the widths involved. Runs before paint to avoid a flash.
@@ -119,7 +122,7 @@ export default function Header() {
           <ul id="site-menu" className="site-header__links">
             {navItems.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} end className="site-header__link" onClick={closeMenu}>
+                <NavLink to={item.to} end={item.to === '/'} className="site-header__link" onClick={closeMenu}>
                   {t(item.label)}
                 </NavLink>
               </li>

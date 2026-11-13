@@ -1,0 +1,128 @@
+.peak-story {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(560px, 64vw, 760px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.peak-story__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.peak-story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgb(8 14 22 / 0.35), rgb(8 14 22 / 0.1) 60%, rgb(8 14 22 / 0.25));
+}
+
+/* Dotted route climbing toward the card, like a trail on a map. */
+.peak-story__route {
+  position: absolute;
+  top: 12%;
+  left: 4%;
+  width: 52%;
+  height: 76%;
+  fill: none;
+}
+
+.peak-story__route polyline {
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.peak-story__route circle {
+  fill: #fff;
+}
+
+.peak-story__route .peak-story__summit {
+  fill: var(--orange);
+  stroke: #fff;
+  stroke-width: 3;
+}
+
+.peak-story__card {
+  width: min(460px, 100% - 32px);
+  margin: 64px max(16px, (100% - 1240px) / 2) 64px auto;
+  padding: 44px 44px 48px;
+  background: #eeebe5;
+  box-shadow: 0 30px 60px rgb(0 0 0 / 0.35);
+  color: #333;
+}
+
+.peak-story__title {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #141414;
+}
+
+/* A short rule under the figures, then the text. */
+.peak-story__meta {
+  margin: 0 0 22px;
+  padding-bottom: 22px;
+  background: linear-gradient(#141414, #141414) left bottom / 64px 1px no-repeat;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.peak-story__card p:not(.peak-story__meta) {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.peak-story__subtitle {
+  margin: 26px 0 8px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--orange-dark);
+}
+
+/* Phones: the photo on top, the card overlapping its lower edge. */
+@media (max-width: 760px) {
+  .peak-story {
+    display: block;
+    min-height: 0;
+    padding-top: 280px;
+  }
+
+  .peak-story__bg {
+    bottom: auto;
+    height: 340px;
+  }
+
+  .peak-story::before {
+    bottom: auto;
+    height: 340px;
+  }
+
+  .peak-story__route {
+    top: 24px;
+    left: 16px;
+    width: 70%;
+    height: 220px;
+  }
+
+  .peak-story__card {
+    margin: 0 auto;
+    padding: 32px 24px 36px;
+  }
+}

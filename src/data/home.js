@@ -89,7 +89,7 @@ export const recent = {
         en: 'A hike to the Wallace Falls waterfalls.',
       },
       video: videos.wallaceFalls,
-      link: '/alta-montana',
+      link: '/senderismo',
     },
   ],
 }

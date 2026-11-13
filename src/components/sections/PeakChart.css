@@ -1,0 +1,225 @@
+.peak-chart {
+  --chart-bg: var(--bg-1);
+  overflow: hidden;
+}
+
+.peak-chart.section--dark {
+  --chart-bg: var(--bg-0);
+}
+
+/* Phones scroll the chart sideways instead of squeezing the labels. */
+.peak-chart__scroll {
+  padding-top: 56px;
+}
+
+/* The plotting area. The scale's numbers hang off its left edge. */
+.peak-chart__area {
+  position: relative;
+  height: clamp(300px, 38vw, 460px);
+  margin-left: 64px;
+}
+
+.peak-chart__ticks {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.peak-chart__ticks li {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-top: 1px dashed rgb(255 255 255 / 0.1);
+}
+
+.peak-chart__ticks li:first-child {
+  border-top: 1px solid rgb(255 255 255 / 0.25);
+}
+
+.peak-chart__ticks span {
+  position: absolute;
+  right: calc(100% + 12px);
+  translate: 0 -50%;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.peak-chart__axis {
+  position: absolute;
+  bottom: -32px;
+  left: -64px;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.peak-chart__peaks {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.peak-chart__peak {
+  position: absolute;
+  bottom: 0;
+  left: var(--left);
+  width: var(--width);
+  height: var(--height);
+}
+
+/* Only the mountain itself and its label take clicks, not the empty
+   corners of its box, which overlap the neighbours. */
+.peak-chart__link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.peak-chart__shape,
+.peak-chart__label {
+  pointer-events: auto;
+}
+
+.peak-chart__shape {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  transform-origin: bottom;
+  transition: translate 0.35s ease, filter 0.35s ease;
+}
+
+/* Mist at the foot of the range, fading into the section. */
+.peak-chart__peaks::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  height: 22%;
+  background: linear-gradient(transparent, var(--chart-bg));
+  pointer-events: none;
+}
+
+/* A pin above each summit with its name and height. */
+.peak-chart__label {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  translate: -50% 0;
+  white-space: nowrap;
+  text-align: center;
+  transition: color 0.25s ease, translate 0.35s ease;
+}
+
+.peak-chart__label::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  margin-top: 6px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.peak-chart__name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.peak-chart__elevation {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.peak-chart__peak:hover .peak-chart__shape,
+.peak-chart__link:focus-visible .peak-chart__shape {
+  filter: brightness(1.15);
+  translate: 0 -8px;
+}
+
+.peak-chart__peak:hover .peak-chart__label,
+.peak-chart__link:focus-visible .peak-chart__label {
+  color: var(--orange);
+  translate: -50% -8px;
+}
+
+.peak-chart__link:focus-visible {
+  outline: none;
+}
+
+.peak-chart__link:focus-visible .peak-chart__name {
+  text-decoration: underline;
+}
+
+/* On a peak's own page: that one in color, the others faded back. */
+.peak-chart__peak.is-current .peak-chart__label {
+  color: var(--orange);
+}
+
+.peak-chart__peak.is-dimmed .peak-chart__shape {
+  filter: grayscale(1) brightness(0.45);
+}
+
+.peak-chart__peak.is-dimmed .peak-chart__label {
+  opacity: 0.6;
+}
+
+.peak-chart__peak.is-dimmed:hover .peak-chart__shape {
+  filter: grayscale(0.4) brightness(0.8);
+}
+
+/* The peaks rise from the ground one after another the first time the
+   chart scrolls into view, then their labels appear. */
+.peak-chart__area.is-revealed .peak-chart__shape {
+  animation: peak-rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay) backwards;
+}
+
+.peak-chart__area.is-revealed .peak-chart__label {
+  animation: peak-label 0.5s ease calc(var(--delay) + 700ms) backwards;
+}
+
+@keyframes peak-rise {
+  from {
+    scale: 1 0;
+  }
+}
+
+@keyframes peak-label {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .peak-chart__scroll {
+    margin-inline: -16px;
+    padding: 56px 16px 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .peak-chart__scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .peak-chart__area {
+    width: 560px;
+    height: 300px;
+  }
+}

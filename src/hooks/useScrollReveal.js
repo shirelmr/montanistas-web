@@ -12,6 +12,12 @@ const SELECTOR = [
   'main .featured .video',
   'main .recent-card',
   'main .strip__viewport',
+  'main .peak-chart__area',
+  'main .peak-timeline__item',
+  'main .peak-feature__layout',
+  'main .peak-story__card',
+  'main .mosaic__tile',
+  'main .peak-closing__text',
   'main .sponsor',
   'main .media__row',
   'main .interviews__row',
@@ -26,7 +32,7 @@ const SELECTOR = [
 ].join(', ')
 
 // Cards arrive one after another instead of all at once.
-const STAGGERED = '.activity-card, .recent-card, .sponsor'
+const STAGGERED = '.activity-card, .recent-card, .sponsor, .mosaic__tile'
 const STAGGER_MS = 90
 
 // Runs on every page change. It's a layout effect so the blocks are already
