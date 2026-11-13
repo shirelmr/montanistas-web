@@ -21,7 +21,7 @@ npm run preview   # serve the production build
 | `/pequenos-senderistas`  | Pequeños Senderistas                              |
 | `/comunidad`             | Comunidad (cleanups, tree planting, trail days)   |
 | `/en-los-medios`         | Fox report and interviews                         |
-| `/contacto`              | Contact form, emails and hours                    |
+| `/contacto`              | Contact form and emails                           |
 
 ## Hosting
 

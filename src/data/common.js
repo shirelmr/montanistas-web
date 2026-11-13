@@ -107,22 +107,6 @@ export const contact = {
     'marcosbueno@montanistasdewashington.org',
     'aliciatapia@montanistasdewashington.org',
   ],
-  hoursTitle: { es: 'Horario', en: 'Hours' },
-  closed: { es: 'Cerrado', en: 'Closed' },
-  // Monday first. `null` means closed that day.
-  days: {
-    es: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-    en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  },
-  hours: [
-    '09:00 am – 05:00 pm',
-    '09:00 am – 05:00 pm',
-    '09:00 am – 05:00 pm',
-    '09:00 am – 05:00 pm',
-    '09:00 am – 05:00 pm',
-    null,
-    null,
-  ],
 }
 
 export const subscribe = {

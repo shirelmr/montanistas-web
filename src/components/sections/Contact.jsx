@@ -5,9 +5,6 @@ import useNetlifyForm from '../../hooks/useNetlifyForm'
 import { contact, ui } from '../../data/common'
 import './Contact.css'
 
-// Monday-first index of today, to bold the current day in the hours table.
-const today = (new Date().getDay() + 6) % 7
-
 // Messages go to Netlify Forms, which emails them to the group.
 export default function Contact() {
   const { t } = useLanguage()
@@ -35,8 +32,6 @@ export default function Contact() {
       setFilesTooBig(false)
     }
   }
-
-  const days = t(contact.days)
 
   return (
     <section className="contact section section--grey" id="contacto">
@@ -118,29 +113,14 @@ export default function Contact() {
         </div>
 
         <div className="contact__info">
-          <div>
-            <h3 className="contact__info-title">{contact.orgName}</h3>
-            <ul className="contact__emails">
-              {contact.emails.map((email) => (
-                <li key={email}>
-                  <a href={`mailto:${email}`}>{email}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="contact__info-title contact__info-title--hours">{t(contact.hoursTitle)}</h3>
-            <table className="contact__hours">
-              <tbody>
-                {contact.hours.map((time, i) => (
-                  <tr key={i} className={i === today ? 'is-today' : ''}>
-                    <th scope="row">{days[i]}</th>
-                    <td>{time ?? t(contact.closed)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <h3 className="contact__info-title">{contact.orgName}</h3>
+          <ul className="contact__emails">
+            {contact.emails.map((email) => (
+              <li key={email}>
+                <a href={`mailto:${email}`}>{email}</a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -107,9 +107,6 @@
 }
 
 .contact__info {
-  display: flex;
-  justify-content: center;
-  gap: 64px;
   margin-top: 40px;
 }
 
@@ -118,10 +115,6 @@
   font-size: 18px;
   font-weight: 400;
   text-transform: uppercase;
-}
-
-.contact__info-title--hours {
-  text-transform: none;
 }
 
 .contact__emails {
@@ -141,27 +134,6 @@
   text-decoration: underline;
 }
 
-.contact__hours {
-  border-collapse: collapse;
-  font-size: 14px;
-  text-align: left;
-  color: var(--text-muted);
-}
-
-.contact__hours th {
-  padding: 1px 12px 1px 0;
-  font-weight: 400;
-}
-
-.contact__hours td {
-  padding: 1px 0;
-}
-
-.contact__hours .is-today {
-  font-weight: 700;
-  color: var(--text-soft);
-}
-
 @media (max-width: 640px) {
   .contact {
     padding: 56px 0;
@@ -169,11 +141,5 @@
 
   .contact__visit {
     margin-top: 40px;
-  }
-
-  .contact__info {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
   }
 }
